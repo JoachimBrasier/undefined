@@ -1,0 +1,23 @@
+.root {
+  @apply h-10 border-b border-slate-100;
+}
+
+.container {
+  @apply w-full h-full max-w-screen-xl mx-auto px-4 flex items-center;
+}
+
+.logo {
+  @apply cursor-pointer;
+}
+
+.links {
+  @apply ml-auto;
+}
+
+.link {
+  @apply text-slate-700 text-center text-base font-normal cursor-pointer hover:text-blue-400;
+}
+
+.link:not(:first-child) {
+  @apply ml-4;
+}
