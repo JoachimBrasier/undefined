@@ -1,0 +1,11 @@
+.root {
+  @apply bg-slate-100;
+}
+
+.container {
+  @apply w-full max-w-screen-xl mx-auto px-4 py-8;
+}
+
+.text {
+  @apply block text-slate-700 text-center text-base font-normal;
+}
