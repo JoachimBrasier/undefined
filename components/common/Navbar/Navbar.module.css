@@ -1,5 +1,5 @@
 .root {
-  @apply h-10 border-b border-slate-100;
+  @apply h-14 border-b border-slate-100;
 }
 
 .container {
@@ -14,10 +14,22 @@
   @apply ml-auto;
 }
 
-.link {
-  @apply text-gray-700 text-center text-base font-normal cursor-pointer hover:text-blue-400;
+.links .link {
+  @apply text-gray-700 text-center text-sm font-medium cursor-pointer hover:text-blue-600;
 }
 
-.link:not(:first-child) {
-  @apply ml-4;
+.links .link:not(:first-child) {
+  @apply ml-6;
+}
+
+.divider {
+  @apply w-px h-3/5 bg-gray-300 mx-6;
+}
+
+.actions {
+  @apply flex items-center;
+}
+
+.actions > :not(:first-child) {
+  @apply ml-6;
 }

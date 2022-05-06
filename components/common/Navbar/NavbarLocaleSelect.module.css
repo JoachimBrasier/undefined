@@ -1,0 +1,32 @@
+.root {
+  @apply relative;
+}
+
+.test {
+  @apply relative;
+}
+
+.button {
+  @apply py-1 px-3 text-slate-600 rounded-full cursor-pointer text-xs leading-5 font-medium flex items-center;
+  @apply bg-slate-200/50 hover:bg-slate-300/50 !important;
+}
+
+.button .icon {
+  @apply h-3 w-3 ml-2 text-slate-600;
+}
+
+.dropdown {
+  @apply absolute mt-1 right-0 overflow-auto rounded-md bg-white py-2 shadow;
+}
+
+.item {
+  @apply whitespace-nowrap hover:bg-slate-100 cursor-pointer px-2 py-0.5 flex items-center justify-between text-slate-600 text-sm leading-6 font-medium;
+}
+
+.itemSelected {
+  @apply text-blue-600;
+}
+
+.item .icon {
+  @apply h-4 w-4 ml-4 text-blue-600;
+}

@@ -1,0 +1,25 @@
+{
+  "logo": {
+    "en": "Home",
+    "fr": "Accueil"
+  },
+  "links": [
+    {
+      "href": "/about",
+      "label": {
+        "en": "About",
+        "fr": "A propos"
+      }
+    }
+  ],
+  "locales": [
+    {
+      "label": "English",
+      "value": "en"
+    },
+    {
+      "label": "Français",
+      "value": "fr"
+    }
+  ]
+}
