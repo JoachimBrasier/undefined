@@ -15,7 +15,7 @@
 }
 
 .link {
-  @apply text-slate-700 text-center text-base font-normal cursor-pointer hover:text-blue-400;
+  @apply text-gray-700 text-center text-base font-normal cursor-pointer hover:text-blue-400;
 }
 
 .link:not(:first-child) {
