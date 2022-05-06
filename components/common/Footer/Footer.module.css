@@ -3,7 +3,7 @@
 }
 
 .container {
-  @apply w-full max-w-screen-xl mx-auto px-4 py-8;
+  @apply w-full h-full max-w-screen-xl mx-auto px-4 py-8;
 }
 
 .text {
