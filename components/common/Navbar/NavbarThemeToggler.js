@@ -5,7 +5,7 @@ import s from './NavbarThemeToggler.module.css';
 
 const NavbarThemeToggler = () => {
   const { theme, setTheme } = useTheme();
-
+  console.log(theme);
   return (
     <button className={s.root} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
       {theme === 'light' ? <MoonIcon className={s.icon} /> : <SunIcon className={s.icon} />}

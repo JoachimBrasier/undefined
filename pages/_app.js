@@ -5,7 +5,7 @@ import { Layout } from 'components/common';
 import 'styles/global.css';
 
 const App = ({ Component, pageProps }) => (
-  <ThemeProvider attribute="class">
+  <ThemeProvider attribute="class" enableSystem={false}>
     <Layout {...pageProps}>
       <Component {...pageProps} />
     </Layout>
