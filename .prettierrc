@@ -1,0 +1,25 @@
+{
+  "tabWidth": 2,
+  "singleQuote": true,
+  "printWidth": 120,
+  "arrowParens": "always",
+  "trailingComma": "all",
+  "parser": "babel",
+  "semi": true,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "importOrder": [
+    "^(next/(.*)$)|^(next$)",
+    "<THIRD_PARTY_MODULES>",
+    "^components/(.*)$",
+    "^lib/(.*)$",
+    "^utils/(.*)$",
+    "^assets/(.*)$",
+    "^config/(.*)$",
+    "^@fontsource/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true,
+}

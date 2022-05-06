@@ -1,0 +1,37 @@
+{
+  "name": "undefined",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "next.config.js",
+  "author": "",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoachimBrasier/undefined.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JoachimBrasier/undefined/issues"
+  },
+  "homepage": "https://github.com/JoachimBrasier/undefined#readme",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.14.0",
+    "eslint-config-next": "^12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "postcss": "^8.4.13",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.0.24"
+  }
+}
