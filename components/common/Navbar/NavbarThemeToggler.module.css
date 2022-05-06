@@ -1,0 +1,5 @@
+.root {}
+
+.icon {
+  @apply h-6 w-6 text-slate-400 hover:text-slate-600;
+}

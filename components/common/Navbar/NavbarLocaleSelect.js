@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Listbox } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
+import cookies from 'js-cookie';
 import { Fragment, useEffect, useState } from 'react';
 
 import i18n from './i18n.json';
@@ -19,7 +20,9 @@ const NavbarLocaleSelect = () => {
   const [selectedLocale, setSelectedLocale] = useState(locales.find((locale) => locale.value === activeLocale));
 
   useEffect(() => {
-    setSelectedLocale(locales.find((locale) => locale.value === activeLocale));
+    const newLocale = locales.find((locale) => locale.value === activeLocale);
+    cookies.set('NEXT_LOCALE', newLocale.value);
+    setSelectedLocale(newLocale);
   }, [activeLocale]);
 
   return (

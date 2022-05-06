@@ -1,5 +1,5 @@
 .root {
-  @apply h-14 border-b border-slate-100;
+  @apply h-14 border-b border-slate-100 bg-white;
 }
 
 .container {

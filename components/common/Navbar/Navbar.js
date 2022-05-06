@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import i18n from './i18n.json';
 import NavbarLocaleSelect from './NavbarLocaleSelect';
+import NavbarThemeToggler from './NavbarThemeToggler';
 
 import s from './Navbar.module.css';
 
@@ -27,6 +28,7 @@ const Navbar = () => {
         <div className={s.divider} />
         <div className={s.actions}>
           <NavbarLocaleSelect />
+          <NavbarThemeToggler />
         </div>
       </div>
     </nav>
