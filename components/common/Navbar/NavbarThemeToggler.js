@@ -1,15 +1,24 @@
+import { useRouter } from 'next/router';
+
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { useTheme } from 'next-themes';
+
+import { Tooltip } from 'components/ui';
+
+import { themes } from './i18n.json';
 
 import s from './NavbarThemeToggler.module.css';
 
 const NavbarThemeToggler = () => {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
+  const { locale } = useRouter();
+
   return (
-    <button className={s.root} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-      {theme === 'light' ? <MoonIcon className={s.icon} /> : <SunIcon className={s.icon} />}
-    </button>
+    <Tooltip title={theme === 'light' ? themes.dark[locale] : themes.light[locale]} placement="bottom">
+      <button className={s.root} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+        {theme === 'light' ? <MoonIcon className={s.icon} /> : <SunIcon className={s.icon} />}
+      </button>
+    </Tooltip>
   );
 };
 
