@@ -17,7 +17,9 @@
     "^assets/(.*)$",
     "^config/(.*)$",
     "^@fontsource/(.*)$",
-    "^[./]"
+    "^[./]",
+    "^[./].*(?<!\\.(c|le|sc)ss)$",
+    "\\.(c|le|sc)ss$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
