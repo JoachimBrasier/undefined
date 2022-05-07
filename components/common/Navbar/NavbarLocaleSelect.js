@@ -7,20 +7,19 @@ import clsx from 'clsx';
 import cookies from 'js-cookie';
 import { Fragment, useEffect, useState } from 'react';
 
-import i18n from './i18n.json';
+import locales from 'locales';
 
 import s from './NavbarLocaleSelect.module.css';
 
 const { Button, Options, Option } = Listbox;
-const { locales } = i18n;
 
 const NavbarLocaleSelect = () => {
   const router = useRouter();
   const { locale: activeLocale } = router;
-  const [selectedLocale, setSelectedLocale] = useState(locales.find((locale) => locale.value === activeLocale));
+  const [selectedLocale, setSelectedLocale] = useState(locales.options.find((locale) => locale.value === activeLocale));
 
   useEffect(() => {
-    const newLocale = locales.find((locale) => locale.value === activeLocale);
+    const newLocale = locales.options.find((locale) => locale.value === activeLocale);
     cookies.set('NEXT_LOCALE', newLocale.value);
     setSelectedLocale(newLocale);
   }, [activeLocale]);
@@ -33,7 +32,7 @@ const NavbarLocaleSelect = () => {
           <ChevronDownIcon className={s.icon} />
         </Button>
         <Options className={s.dropdown}>
-          {locales.map((locale) => {
+          {locales.options.map((locale) => {
             const { pathname, query, asPath } = router;
 
             return (

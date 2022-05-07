@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import i18n from './i18n.json';
+import locales from 'locales';
+
 import NavbarLocaleSelect from './NavbarLocaleSelect';
 import NavbarThemeToggler from './NavbarThemeToggler';
 
 import s from './Navbar.module.css';
 
-const { links } = i18n;
-
 const Navbar = () => {
   const { locale } = useRouter();
+  const { links } = locales[locale].layout.navbar;
 
   return (
     <nav className={s.root}>
@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className={s.links}>
           {links.map((link) => (
             <Link key={link.href} href={link.href} as={link?.as}>
-              <a className={s.link}>{link.label[locale]}</a>
+              <a className={s.link}>{link.label}</a>
             </Link>
           ))}
         </div>

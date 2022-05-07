@@ -17,6 +17,7 @@
     "^assets/(.*)$",
     "^config/(.*)$",
     "^@fontsource/(.*)$",
+    "^locales",
     "^[./].*(?<!\\.(c|le|sc)ss)$",
     "\\.(c|le|sc)ss$"
   ],
