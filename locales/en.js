@@ -21,6 +21,7 @@ const en = {
         title: 'Filter by',
         latest: 'Date',
         popular: 'Popularity',
+        history: 'Visited',
       },
       tags: {
         title: 'Tags',

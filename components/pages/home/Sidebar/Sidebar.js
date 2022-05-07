@@ -20,7 +20,7 @@ const Sidebar = () => {
   const [activeFilter, setActiveFilter] = useState('latest');
   const [activeTags, setActiveTags] = useState([]);
   const { locale: activeLocale } = useRouter();
-  const { filters, tags } = locales[activeLocale].pages.home;
+  const { filters, tags, history } = locales[activeLocale].pages.home;
 
   const onTagsChange = (value) => {
     const newActiveTags = [...activeTags];
@@ -45,6 +45,12 @@ const Sidebar = () => {
             value="popular"
             label={filters.popular}
             selected={activeFilter === 'popular'}
+            onChange={setActiveFilter}
+          />
+          <Item
+            value="history"
+            label={filters.history}
+            selected={activeFilter === 'history'}
             onChange={setActiveFilter}
           />
         </ul>

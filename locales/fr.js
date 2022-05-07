@@ -21,6 +21,7 @@ const fr = {
         title: 'Filtrer par',
         latest: 'Date',
         popular: 'Popularité',
+        history: 'Visités',
       },
       tags: {
         title: 'Mots-clés',
