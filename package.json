@@ -28,7 +28,8 @@
     "next-themes": "^0.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-popper": "^2.3.0"
+    "react-popper": "^2.3.0",
+    "react-string-replace": "^1.1.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",

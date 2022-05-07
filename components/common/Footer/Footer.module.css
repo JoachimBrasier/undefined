@@ -7,5 +7,9 @@
 }
 
 .text {
-  @apply block text-gray-700 dark:text-slate-200 leading-6 text-center text-base font-normal;
+  @apply block text-gray-700 dark:text-slate-200 leading-6 text-center text-base font-normal flex items-center justify-center;
+}
+
+.icon {
+  @apply h-5 w-5 text-red-500 dark:text-red-600;
 }
