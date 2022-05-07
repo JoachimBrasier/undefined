@@ -5,9 +5,11 @@ import { useTheme } from 'next-themes';
 
 import { Tooltip } from 'components/ui';
 
-import { themes } from './i18n.json';
+import i18n from './i18n.json';
 
 import s from './NavbarThemeToggler.module.css';
+
+const { themes } = i18n;
 
 const NavbarThemeToggler = () => {
   const { theme, setTheme } = useTheme();
