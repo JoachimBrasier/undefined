@@ -17,6 +17,14 @@ const fr = {
   pages: {
     home: {
       searchPlaceholder: 'Rechercher...',
+      filters: {
+        title: 'Filtrer par',
+        latest: 'Date',
+        popular: 'Popularité',
+      },
+      tags: {
+        title: 'Mots-clés',
+      },
     },
     about: {},
   },

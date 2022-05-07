@@ -17,6 +17,14 @@ const en = {
   pages: {
     home: {
       searchPlaceholder: 'Search...',
+      filters: {
+        title: 'Filter by',
+        latest: 'Date',
+        popular: 'Popularity',
+      },
+      tags: {
+        title: 'Tags',
+      },
     },
     about: {},
   },
