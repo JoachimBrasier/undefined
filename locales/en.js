@@ -18,7 +18,9 @@ const en = {
   },
   components: {},
   pages: {
-    home: {},
+    home: {
+      searchPlaceholder: 'Search...',
+    },
     about: {},
   },
 };

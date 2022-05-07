@@ -18,7 +18,9 @@ const fr = {
   },
   components: {},
   pages: {
-    home: {},
+    home: {
+      searchPlaceholder: 'Rechercher...',
+    },
     about: {},
   },
 };
