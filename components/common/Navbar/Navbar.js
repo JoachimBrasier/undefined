@@ -9,8 +9,8 @@ import NavbarThemeToggler from './NavbarThemeToggler';
 import s from './Navbar.module.css';
 
 const Navbar = () => {
-  const { locale } = useRouter();
-  const { links } = locales[locale].layout.navbar;
+  const { locale: activeLocale } = useRouter();
+  const { links } = locales[activeLocale].layout.navbar;
 
   return (
     <nav className={s.root}>

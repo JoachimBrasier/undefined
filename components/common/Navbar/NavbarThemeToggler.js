@@ -11,8 +11,8 @@ import s from './NavbarThemeToggler.module.css';
 
 const NavbarThemeToggler = () => {
   const { theme, setTheme } = useTheme();
-  const { locale } = useRouter();
-  const { light, dark } = locales[locale].themes;
+  const { locale: activeLocale } = useRouter();
+  const { light, dark } = locales[activeLocale].themes;
 
   return (
     <Tooltip title={theme === 'light' ? dark : light} placement="bottom">

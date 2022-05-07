@@ -8,8 +8,8 @@ import locales from 'locales';
 import s from './Footer.module.css';
 
 const Footer = () => {
-  const { locale } = useRouter();
-  const { loveMessage } = locales[locale].layout.footer;
+  const { locale: activeLocale } = useRouter();
+  const { loveMessage } = locales[activeLocale].layout.footer;
 
   return (
     <footer className={s.root}>
