@@ -1,5 +1,7 @@
 import Router from 'next/router';
 
+import { DefaultSeo } from 'next-seo';
+import SEO from 'next-seo.config';
 import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
 
@@ -15,6 +17,7 @@ Router.onRouteChangeComplete = () => NProgress.done();
 
 const App = ({ Component, pageProps }) => (
   <ThemeProvider attribute="class" enableSystem={false}>
+    <DefaultSeo {...SEO} />
     <Layout {...pageProps}>
       <Component {...pageProps} />
     </Layout>

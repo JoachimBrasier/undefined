@@ -7,7 +7,7 @@ import NavbarThemeToggler from './NavbarThemeToggler';
 
 import s from './Navbar.module.css';
 
-const { logo, links } = i18n;
+const { links } = i18n;
 
 const Navbar = () => {
   const { locale } = useRouter();
@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className={s.root}>
       <div className={s.container}>
         <Link href="/">
-          <a className={s.logo}>{logo[locale]}</a>
+          <a className={s.logo}>Undefined</a>
         </Link>
         <div className={s.links}>
           {links.map((link) => (

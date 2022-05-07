@@ -1,8 +1,4 @@
 {
-  "logo": {
-    "en": "Home",
-    "fr": "Accueil"
-  },
   "themes": {
     "light": {
       "en": "Light theme",

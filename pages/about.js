@@ -1,3 +1,10 @@
-export default function About() {
-  return <h1>About</h1>;
-}
+import { NextSeo } from 'next-seo';
+
+const About = () => (
+  <>
+    <NextSeo title="About || A propos" />
+    <h1>About</h1>
+  </>
+);
+
+export default About;
