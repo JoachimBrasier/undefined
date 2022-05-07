@@ -23,9 +23,7 @@ const en = {
         popular: 'Popularity',
         history: 'Visited',
       },
-      tags: {
-        title: 'Tags',
-      },
+      tagsTitle: 'Tags',
     },
     about: {},
   },

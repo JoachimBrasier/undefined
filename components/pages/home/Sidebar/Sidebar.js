@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import mockTags from 'mock/tags.json';
-import { useState } from 'react';
+
+import { useHomeContext } from 'components/pages/home';
 
 import locales from 'locales';
 
@@ -17,109 +18,36 @@ const Item = ({ selected, onChange, label, value }) => (
 );
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [activeFilter, setActiveFilter] = useState('latest');
-  const [activeTags, setActiveTags] = useState([]);
   const { locale: activeLocale } = useRouter();
-  const { filters, tags } = locales[activeLocale].pages.home;
-
-  const onTagsChange = (value) => {
-    const newActiveTags = [...activeTags];
-
-    if (newActiveTags.includes(value)) {
-      const index = newActiveTags.indexOf(value);
-      newActiveTags.splice(index, 1);
-    } else {
-      newActiveTags.push(value);
-    }
-
-    setActiveTags(newActiveTags);
-  };
+  const { filters, tagsTitle } = locales[activeLocale].pages.home;
+  const { isSidebarOpen, closeSidebar, filter, setFilter, tags, setTags } = useHomeContext();
 
   return (
     <>
-      <div className={clsx(s.overlay, { [s.overlayVisible]: isOpen })} onClick={() => setIsOpen(false)} />
-      <div className={clsx(s.root, { [s.rootOpen]: isOpen })}>
-        <button className={clsx(s.button, { [s.buttonVisible]: isOpen })} onClick={() => setIsOpen(false)}>
+      <div className={clsx(s.overlay, { [s.overlayVisible]: isSidebarOpen })} onClick={closeSidebar} />
+      <div className={clsx(s.root, { [s.rootOpen]: isSidebarOpen })}>
+        <button className={clsx(s.button, { [s.buttonVisible]: isSidebarOpen })} onClick={closeSidebar}>
           <XIcon className={s.icon} />
         </button>
         <div className={s.block}>
           <span className={s.title}>{filters.title}</span>
           <ul className={s.list}>
-            <Item
-              value="latest"
-              label={filters.latest}
-              selected={activeFilter === 'latest'}
-              onChange={setActiveFilter}
-            />
-            <Item
-              value="popular"
-              label={filters.popular}
-              selected={activeFilter === 'popular'}
-              onChange={setActiveFilter}
-            />
-            <Item
-              value="history"
-              label={filters.history}
-              selected={activeFilter === 'history'}
-              onChange={setActiveFilter}
-            />
+            <Item value="latest" label={filters.latest} selected={filter === 'latest'} onChange={setFilter} />
+            <Item value="popular" label={filters.popular} selected={filter === 'popular'} onChange={setFilter} />
+            <Item value="history" label={filters.history} selected={filter === 'history'} onChange={setFilter} />
           </ul>
         </div>
         <div className={s.block}>
-          <span className={s.title}>{tags.title}</span>
+          <span className={s.title}>{tagsTitle}</span>
           <ul className={s.list}>
             {mockTags.map(({ value, label }) => (
-              <Item
-                key={value}
-                value={value}
-                label={label}
-                selected={activeTags.includes(value)}
-                onChange={onTagsChange}
-              />
+              <Item key={value} value={value} label={label} selected={tags.includes(value)} onChange={setTags} />
             ))}
           </ul>
         </div>
       </div>
     </>
   );
-
-  // return (
-  //   <div className={s.root}>
-  //     <div className={s.block}>
-  //       <span className={s.title}>{filters.title}</span>
-  //       <ul className={s.list}>
-  //         <Item value="latest" label={filters.latest} selected={activeFilter === 'latest'} onChange={setActiveFilter} />
-  //         <Item
-  //           value="popular"
-  //           label={filters.popular}
-  //           selected={activeFilter === 'popular'}
-  //           onChange={setActiveFilter}
-  //         />
-  //         <Item
-  //           value="history"
-  //           label={filters.history}
-  //           selected={activeFilter === 'history'}
-  //           onChange={setActiveFilter}
-  //         />
-  //       </ul>
-  //     </div>
-  //     <div className={s.block}>
-  //       <span className={s.title}>{tags.title}</span>
-  //       <ul className={s.list}>
-  //         {mockTags.map(({ value, label }) => (
-  //           <Item
-  //             key={value}
-  //             value={value}
-  //             label={label}
-  //             selected={activeTags.includes(value)}
-  //             onChange={onTagsChange}
-  //           />
-  //         ))}
-  //       </ul>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Sidebar;

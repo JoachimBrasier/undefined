@@ -3,5 +3,13 @@
 }
 
 .input {
-  @apply w-full rounded-md shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-800 dark:hover:bg-slate-700 text-sm leading-5 font-normal pl-4 pr-[72px] py-2 placeholder:text-slate-400 text-gray-700 dark:text-slate-200;
+  @apply w-full rounded-md shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-800 dark:hover:bg-slate-700 text-sm leading-5 font-normal pl-10 lg:pl-4 py-2 placeholder:text-slate-400 text-gray-700 dark:text-slate-200;
+}
+
+.button {
+  @apply block lg:hidden absolute left-0 h-full w-10 flex justify-center items-center;
+}
+
+.icon {
+  @apply h-5 w-5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
 }

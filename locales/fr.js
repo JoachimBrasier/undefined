@@ -23,9 +23,7 @@ const fr = {
         popular: 'Popularité',
         history: 'Visités',
       },
-      tags: {
-        title: 'Mots-clés',
-      },
+      tagsTitle: 'Mots-clés',
     },
     about: {},
   },
