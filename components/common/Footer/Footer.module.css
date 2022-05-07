@@ -1,5 +1,5 @@
 .root {
-  @apply bg-slate-100;
+  @apply bg-slate-100 dark:bg-slate-800;
 }
 
 .container {
@@ -7,5 +7,5 @@
 }
 
 .text {
-  @apply block text-gray-700 leading-6 text-center text-base font-normal;
+  @apply block text-gray-700 dark:text-slate-200 leading-6 text-center text-base font-normal;
 }

@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
 
-import clsx from 'clsx';
-
 import i18n from './i18n.json';
 
 import s from './Footer.module.css';
