@@ -10,7 +10,7 @@ import s from './Navbar.module.css';
 
 const Navbar = () => {
   const { locale: activeLocale } = useRouter();
-  const { links } = locales[activeLocale].layout.navbar;
+  const { about } = locales[activeLocale].layout.navbar.links;
 
   return (
     <nav className={s.root}>
@@ -20,11 +20,9 @@ const Navbar = () => {
         </Link>
         <div className={s.right}>
           <div className={s.links}>
-            {links.map((link) => (
-              <Link key={link.href} href={link.href} as={link?.as}>
-                <a className={s.link}>{link.label}</a>
-              </Link>
-            ))}
+            <Link href="/about">
+              <a className={s.link}>{about}</a>
+            </Link>
           </div>
           <div className={s.divider} />
           <div className={s.actions}>

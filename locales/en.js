@@ -5,12 +5,9 @@ const en = {
   },
   layout: {
     navbar: {
-      links: [
-        {
-          href: '/about',
-          label: 'About',
-        },
-      ],
+      links: {
+        about: 'About',
+      },
     },
     footer: {
       loveMessage: 'Made with [icon-heart] for developers',
