@@ -3,5 +3,5 @@
 }
 
 .input {
-  @apply w-full rounded-md shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-800 dark:hover:bg-slate-700 text-sm leading-5 font-normal pl-4 pr-[72px] py-2 placeholder:text-slate-400;
+  @apply w-full rounded-md shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-800 dark:hover:bg-slate-700 text-sm leading-5 font-normal pl-4 pr-[72px] py-2 placeholder:text-slate-400 text-gray-700 dark:text-slate-200;
 }
