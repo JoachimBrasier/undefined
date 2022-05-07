@@ -16,7 +16,7 @@
 }
 
 .dropdown {
-  @apply absolute z-10 mt-1 right-0 overflow-auto rounded-md bg-white dark:bg-slate-800 py-2 shadow;
+  @apply absolute z-10 mt-1 right-0 overflow-auto rounded-md bg-white dark:bg-slate-800 py-2 shadow focus:outline-none;
 }
 
 .item {

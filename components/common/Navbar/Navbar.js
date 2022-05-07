@@ -18,17 +18,19 @@ const Navbar = () => {
         <Link href="/">
           <a className={s.logo}>Undefined</a>
         </Link>
-        <div className={s.links}>
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} as={link?.as}>
-              <a className={s.link}>{link.label}</a>
-            </Link>
-          ))}
-        </div>
-        <div className={s.divider} />
-        <div className={s.actions}>
-          <NavbarLocaleSelect />
-          <NavbarThemeToggler />
+        <div className={s.right}>
+          <div className={s.links}>
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} as={link?.as}>
+                <a className={s.link}>{link.label}</a>
+              </Link>
+            ))}
+          </div>
+          <div className={s.divider} />
+          <div className={s.actions}>
+            <NavbarLocaleSelect />
+            <NavbarThemeToggler />
+          </div>
         </div>
       </div>
     </nav>

@@ -13,6 +13,10 @@ body {
   @apply bg-white dark:bg-slate-900;
 }
 
+a, button, input, select {
+  @apply focus:outline-none;
+}
+
 #nprogress .bar {
   @apply bg-blue-600;
 }

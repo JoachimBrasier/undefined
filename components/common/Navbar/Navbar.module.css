@@ -10,8 +10,12 @@
   @apply cursor-pointer;
 }
 
+.right {
+  @apply h-full ml-auto flex items-center;
+}
+
 .links {
-  @apply ml-auto;
+  @apply hidden sm:block;
 }
 
 .links .link {
@@ -23,7 +27,7 @@
 }
 
 .divider {
-  @apply mx-6 w-px h-3/5 bg-slate-900/10 dark:bg-slate-700;
+  @apply hidden sm:block mx-6 w-px h-3/5 bg-slate-900/10 dark:bg-slate-700;
 }
 
 .actions {
