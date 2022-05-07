@@ -16,15 +16,15 @@
 }
 
 .dropdown {
-  @apply absolute mt-1 right-0 overflow-auto rounded-md bg-white py-2 shadow;
+  @apply absolute mt-1 right-0 overflow-auto rounded-md bg-white dark:bg-slate-800 py-2 shadow;
 }
 
 .item {
-  @apply whitespace-nowrap hover:bg-slate-100 cursor-pointer px-2 py-0.5 flex items-center justify-between text-slate-600 text-sm leading-6 font-medium;
+  @apply whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-2 py-0.5 flex items-center justify-between text-slate-600 dark:text-slate-400 text-sm leading-6 font-medium;
 }
 
 .itemSelected {
-  @apply text-blue-600;
+  @apply text-blue-600 dark:text-blue-600;
 }
 
 .item .icon {
