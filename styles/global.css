@@ -13,7 +13,7 @@ body {
   @apply bg-white dark:bg-slate-900;
 }
 
-a, button, input, select {
+a, button, input, select, textarea {
   @apply focus:outline-none;
 }
 
