@@ -15,6 +15,7 @@ import s from './GridCard.module.css';
 // TODO responsive mode for mobile
 // TODO select tag on click
 // TODO overlay on tags (bottom image)
+// TODO remove body scroll
 // ? add likes
 const GridCard = memo(({ resource }) => {
   const { locale: activeLocale } = useRouter();
