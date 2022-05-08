@@ -16,6 +16,7 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeError = () => NProgress.done();
 Router.onRouteChangeComplete = () => NProgress.done();
 
+// TODO disable hover on touch devices
 const App = ({ Component, pageProps }) => (
   <ThemeProvider attribute="class" enableSystem={false}>
     <Head>
