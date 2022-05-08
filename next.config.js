@@ -5,7 +5,7 @@ module.exports = {
     defaultLocale: 'en',
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'dummyimage.com'],
   },
   // Fix dark mode in CSS modules
   // See https://github.com/tailwindlabs/tailwindcss/discussions/3109#discussioncomment-1632726

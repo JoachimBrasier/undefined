@@ -7,7 +7,7 @@
 }
 
 .root {
-  @apply hidden lg:block absolute lg:relative left-0 top-0 bottom-0 z-20 w-full sm:w-72 lg:w-64 bg-white dark:bg-slate-900 h-screen lg:h-auto overflow-auto py-6 lg:py-0 px-6 lg:pl-0 border-r border-slate-900/10 dark:border-slate-700;
+  @apply shrink-0 hidden lg:block fixed lg:relative left-0 top-0 bottom-0 z-20 w-full sm:w-72 lg:w-64 bg-white dark:bg-slate-900 h-screen lg:h-auto overflow-auto py-6 lg:py-0 px-6 lg:pl-0 border-r border-slate-900/10 dark:border-slate-700;
 }
 
 .rootOpen {

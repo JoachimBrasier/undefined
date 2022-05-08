@@ -16,6 +16,7 @@ const en = {
   components: {},
   pages: {
     home: {
+      resourceDeprecated: 'Deprecated',
       searchPlaceholder: 'Search...',
       filters: {
         title: 'Filter by',

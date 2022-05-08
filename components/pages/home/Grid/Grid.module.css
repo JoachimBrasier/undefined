@@ -1,0 +1,9 @@
+.root {
+  @apply grid grid-cols-1 sm:grid-cols-2 auto-rows-auto gap-6 pt-6;
+}
+
+@media (min-width: 850px) {
+  .root {
+    @apply grid-cols-3;
+  }
+}
