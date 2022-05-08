@@ -18,6 +18,12 @@ const en = {
     home: {
       resourceDeprecated: 'Deprecated',
       searchPlaceholder: 'Search...',
+      hero: {
+        title: 'Be part of the community',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
+        button: 'Login with GitHub',
+      },
       filters: {
         title: 'Filter by',
         latest: 'Date',
