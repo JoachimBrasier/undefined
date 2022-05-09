@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
@@ -18,7 +19,7 @@ const Item = ({ selected, onChange, label, value }) => (
 
 const Sidebar = ({ tags }) => {
   const { locale: activeLocale } = useRouter();
-  const { filters, tagsTitle } = locales[activeLocale].pages.home;
+  const { filters, tagsTitle, tagsTranslate } = locales[activeLocale].pages.home;
   const { isSidebarOpen, closeSidebar, activeFilter, setActiveFilter, activeTags, setActiveTags } = useHomeContext();
 
   return (
@@ -52,7 +53,12 @@ const Sidebar = ({ tags }) => {
           </ul>
         </div>
         <div className={s.block}>
-          <span className={s.title}>{tagsTitle}</span>
+          <span className={s.title}>
+            {tagsTitle}
+            <Link href="/translate/tags">
+              <a className={s.translateButton}>{tagsTranslate}</a>
+            </Link>
+          </span>
           <ul className={s.list}>
             {tags.map(({ id, name }) => (
               <Item

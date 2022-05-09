@@ -31,7 +31,12 @@
 }
 
 .title {
-  @apply block font-semibold text-slate-900 dark:text-slate-200 mb-3;
+  @apply relative block font-semibold text-slate-900 dark:text-slate-200 mb-3;
+}
+
+.translateButton {
+  @apply absolute right-0 top-1/2 -translate-y-1/2 py-1 px-3 text-slate-600 dark:text-slate-400 rounded-full cursor-pointer text-xs leading-5 font-medium;
+  @apply bg-slate-100 hover:bg-slate-300/50 dark:bg-slate-800 dark:hover:bg-slate-700 !important;
 }
 
 .list {

@@ -31,6 +31,7 @@ const en = {
         history: 'Visited',
       },
       tagsTitle: 'Tags',
+      tagsTranslate: 'Translate',
     },
     about: {},
   },

@@ -31,6 +31,7 @@ const fr = {
         history: 'Visités',
       },
       tagsTitle: 'Mots-clés',
+      tagsTranslate: 'Traduire',
     },
     about: {},
   },
