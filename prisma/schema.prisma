@@ -11,25 +11,29 @@ datasource db {
 }
 
 model Resource {
-  id          Int                  @id @default(autoincrement())
-  title       String
-  tags        Tag[]
-  url         String
-  image       String
-  description ResourceDescription?
-  status      ResourceStatus       @default(value: SUBMITTED)
-  reports     Report[]
-  deprecated  Boolean              @default(false)
-  createdAt   DateTime             @default(now())
-  updatedAt   DateTime             @updatedAt
+  id           Int                   @id @default(autoincrement())
+  title        String
+  tags         Tag[]
+  url          String
+  image        String
+  descriptions ResourceDescriptions?
+  status       ResourceStatus        @default(value: SUBMITTED)
+  reports      Report[]
+  deprecated   Boolean               @default(false)
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+
+  @@map("resources")
 }
 
-model ResourceDescription {
+model ResourceDescriptions {
   id         Int      @id @default(autoincrement())
   resourceId Int      @unique
   resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
   en         String
   fr         String
+
+  @@map("resources_descriptions")
 }
 
 enum ResourceStatus {
@@ -40,16 +44,20 @@ enum ResourceStatus {
 model Tag {
   id        Int        @id @default(autoincrement())
   slug      String     @unique
-  name      TagName?
+  names     TagNames?
   resources Resource[]
+
+  @@map("tags")
 }
 
-model TagName {
+model TagNames {
   id    Int    @id @default(autoincrement())
   tagId Int    @unique
   tag   Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
   en    String
   fr    String
+
+  @@map("tags_names")
 }
 
 model Report {
@@ -59,6 +67,8 @@ model Report {
   resourceId  Int?
   Resource    Resource?  @relation(fields: [resourceId], references: [id], onDelete: Cascade)
   createdAt   DateTime   @default(now())
+
+  @@map("reports")
 }
 
 enum ReportType {
