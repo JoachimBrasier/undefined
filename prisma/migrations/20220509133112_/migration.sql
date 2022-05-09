@@ -31,9 +31,18 @@ CREATE TABLE "ResourceDescription" (
 -- CreateTable
 CREATE TABLE "Tag" (
     "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
 
     CONSTRAINT "Tag_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "TagName" (
+    "id" SERIAL NOT NULL,
+    "tagId" INTEGER NOT NULL,
+    "en" TEXT NOT NULL,
+    "fr" TEXT NOT NULL,
+
+    CONSTRAINT "TagName_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -57,7 +66,7 @@ CREATE TABLE "_ResourceToTag" (
 CREATE UNIQUE INDEX "ResourceDescription_resourceId_key" ON "ResourceDescription"("resourceId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Tag_name_key" ON "Tag"("name");
+CREATE UNIQUE INDEX "TagName_tagId_key" ON "TagName"("tagId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_ResourceToTag_AB_unique" ON "_ResourceToTag"("A", "B");
@@ -67,6 +76,9 @@ CREATE INDEX "_ResourceToTag_B_index" ON "_ResourceToTag"("B");
 
 -- AddForeignKey
 ALTER TABLE "ResourceDescription" ADD CONSTRAINT "ResourceDescription_resourceId_fkey" FOREIGN KEY ("resourceId") REFERENCES "Resource"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "TagName" ADD CONSTRAINT "TagName_tagId_fkey" FOREIGN KEY ("tagId") REFERENCES "Tag"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Report" ADD CONSTRAINT "Report_resourceId_fkey" FOREIGN KEY ("resourceId") REFERENCES "Resource"("id") ON DELETE CASCADE ON UPDATE CASCADE;
