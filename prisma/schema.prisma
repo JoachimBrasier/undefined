@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Resource {
+  id          Int                  @id @default(autoincrement())
+  title       String
+  tags        Tag[]
+  url         String
+  image       String
+  description ResourceDescription?
+  status      ResourceStatus       @default(value: SUBMITTED)
+  reports     Report[]
+  deprecated  Boolean              @default(false)
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+}
+
+model ResourceDescription {
+  id         Int      @id @default(autoincrement())
+  resourceId Int      @unique
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  en         String
+  fr         String
+}
+
+enum ResourceStatus {
+  SUBMITTED
+  PUBLISHED
+}
+
+model Tag {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  resources Resource[]
+}
+
+model Report {
+  id          Int        @id @default(autoincrement())
+  type        ReportType
+  description String
+  resourceId  Int?
+  Resource    Resource?  @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+}
+
+enum ReportType {
+  RESOURCE_DELETED
+  RESOURCE_DUPLICATE
+  RESOURCE_CUSTOM
+}
