@@ -2,28 +2,36 @@ import { Grid, Hero, HomeProvider, List, Search, Sidebar } from 'components/page
 
 import prisma from 'lib/prisma';
 
-const Home = ({ tags }) => {
-  return (
-    <HomeProvider>
-      <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
-        <Sidebar tags={tags} />
-        <div className="flex-grow">
-          <Hero />
-          <Search />
-          <Grid />
-          <List />
-          <div />
-        </div>
+const Home = ({ tags }) => (
+  <HomeProvider>
+    <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
+      <Sidebar tags={tags} />
+      <div className="flex-grow">
+        <Hero />
+        <Search />
+        <Grid />
+        <List />
+        <div />
       </div>
-    </HomeProvider>
-  );
-};
+    </div>
+  </HomeProvider>
+);
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ locale: activeLocale }) => {
   const tags = await prisma.tag.findMany({
     include: {
-      name: true,
+      name: true, // Include all the locales
     },
+  });
+
+  // Sort alphabetically regardless of the active locale
+  tags.sort((a, b) => {
+    // Select the value that match active locale
+    // Fallback to english if there is none
+    const aName = a.name[activeLocale] || a.name['en'];
+    const bName = b.name[activeLocale] || b.name['en'];
+
+    return aName.localeCompare(bName, activeLocale);
   });
 
   return { props: { tags } };
