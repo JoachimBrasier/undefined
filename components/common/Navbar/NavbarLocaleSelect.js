@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Listbox } from '@headlessui/react';
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import { CheckIcon, ChevronDownIcon, PlusIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import cookies from 'js-cookie';
 import { Fragment, useEffect, useState } from 'react';
@@ -48,6 +48,15 @@ const NavbarLocaleSelect = () => {
               </Option>
             );
           })}
+          <div className={s.divider} />
+          <Option key="new" as={Fragment}>
+            <Link href="/locales/new" passHref>
+              <li className={s.item}>
+                New
+                <PlusIcon className="h-4 w-4 ml-4" />
+              </li>
+            </Link>
+          </Option>
         </Options>
       </div>
     </Listbox>
