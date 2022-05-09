@@ -20,7 +20,7 @@ const Home = ({ tags }) => (
 export const getServerSideProps = async ({ locale: activeLocale }) => {
   const tags = await prisma.tag.findMany({
     include: {
-      name: true, // Include all the locales
+      names: true, // Include all the locales
     },
   });
 
@@ -28,8 +28,8 @@ export const getServerSideProps = async ({ locale: activeLocale }) => {
   tags.sort((a, b) => {
     // Select the value that match active locale
     // Fallback to english if there is none
-    const aName = a.name[activeLocale] || a.name['en'];
-    const bName = b.name[activeLocale] || b.name['en'];
+    const aName = a.names[activeLocale] || a.names['en'];
+    const bName = b.names[activeLocale] || b.names['en'];
 
     return aName.localeCompare(bName, activeLocale);
   });

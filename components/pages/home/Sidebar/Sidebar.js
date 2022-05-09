@@ -60,12 +60,12 @@ const Sidebar = ({ tags }) => {
             </Link>
           </span>
           <ul className={s.list}>
-            {tags.map(({ id, name }) => (
+            {tags.map(({ id, slug, names }) => (
               <Item
                 key={id}
-                value={id}
-                label={name[activeLocale] || name['en']}
-                selected={activeTags.includes(id)}
+                value={slug}
+                label={names[activeLocale] || names['en']}
+                selected={activeTags.includes(slug)}
                 onChange={setActiveTags}
               />
             ))}
