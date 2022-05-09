@@ -2,8 +2,8 @@ import { createContext, useCallback, useContext, useMemo, useReducer } from 'rea
 
 const initialState = {
   isSidebarOpen: false,
-  filter: 'latest',
-  tags: [],
+  activeFilter: 'latest',
+  activeTags: [],
   search: '',
 };
 
@@ -12,7 +12,7 @@ const HomeContext = createContext(initialState);
 const homeReducer = (state, action) => {
   switch (action.type) {
     case 'SET_TAGS':
-      const newTags = [...state.tags];
+      const newTags = [...state.activeTags];
 
       if (newTags.includes(action.value)) {
         const index = newTags.indexOf(action.value);
@@ -21,9 +21,9 @@ const homeReducer = (state, action) => {
         newTags.push(action.value);
       }
 
-      return { ...state, tags: newTags };
+      return { ...state, activeTags: newTags };
     case 'SET_FILTER':
-      return { ...state, filter: action.value };
+      return { ...state, activeFilter: action.value };
     case 'OPEN_SIDEBAR':
       return { ...state, isSidebarOpen: true };
     case 'CLOSE_SIDEBAR':
@@ -39,29 +39,39 @@ export const HomeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(homeReducer, initialState);
 
   const isSidebarOpen = useMemo(() => state.isSidebarOpen, [state.isSidebarOpen]);
-  const filter = useMemo(() => state.filter, [state.filter]);
-  const tags = useMemo(() => state.tags, [state.tags]);
+  const activeFilter = useMemo(() => state.activeFilter, [state.activeFilter]);
+  const activeTags = useMemo(() => state.activeTags, [state.activeTags]);
   const search = useMemo(() => state.search, [state.search]);
 
   const toggleSidebar = useCallback(() => dispatch({ type: 'TOGGLE_SIDEBAR' }), [dispatch]);
   const openSidebar = useCallback(() => dispatch({ type: 'OPEN_SIDEBAR' }), [dispatch]);
   const closeSidebar = useCallback(() => dispatch({ type: 'CLOSE_SIDEBAR' }), [dispatch]);
-  const setFilter = useCallback((value) => dispatch({ type: 'SET_FILTER', value }), [dispatch]);
-  const setTags = useCallback((value) => dispatch({ type: 'SET_TAGS', value }), [dispatch]);
+  const setActiveFilter = useCallback((value) => dispatch({ type: 'SET_FILTER', value }), [dispatch]);
+  const setActiveTags = useCallback((value) => dispatch({ type: 'SET_TAGS', value }), [dispatch]);
 
   const value = useMemo(
     () => ({
       isSidebarOpen,
-      filter,
-      tags,
+      activeFilter,
+      activeTags,
       search,
       toggleSidebar,
       openSidebar,
       closeSidebar,
-      setFilter,
-      setTags,
+      setActiveFilter,
+      setActiveTags,
     }),
-    [isSidebarOpen, filter, tags, search, toggleSidebar, openSidebar, closeSidebar, setFilter, setTags],
+    [
+      isSidebarOpen,
+      activeFilter,
+      activeTags,
+      search,
+      toggleSidebar,
+      openSidebar,
+      closeSidebar,
+      setActiveFilter,
+      setActiveTags,
+    ],
   );
 
   return <HomeContext.Provider value={value}>{children}</HomeContext.Provider>;

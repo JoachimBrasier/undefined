@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
-import mockTags from 'mock/tags.json';
 
 import { useHomeContext } from 'components/pages/home';
 
@@ -17,10 +16,10 @@ const Item = ({ selected, onChange, label, value }) => (
   </li>
 );
 
-const Sidebar = () => {
+const Sidebar = ({ tags }) => {
   const { locale: activeLocale } = useRouter();
   const { filters, tagsTitle } = locales[activeLocale].pages.home;
-  const { isSidebarOpen, closeSidebar, filter, setFilter, tags, setTags } = useHomeContext();
+  const { isSidebarOpen, closeSidebar, activeFilter, setActiveFilter, activeTags, setActiveTags } = useHomeContext();
 
   return (
     <>
@@ -32,16 +31,37 @@ const Sidebar = () => {
         <div className={s.block}>
           <span className={s.title}>{filters.title}</span>
           <ul className={s.list}>
-            <Item value="latest" label={filters.latest} selected={filter === 'latest'} onChange={setFilter} />
-            <Item value="popular" label={filters.popular} selected={filter === 'popular'} onChange={setFilter} />
-            <Item value="history" label={filters.history} selected={filter === 'history'} onChange={setFilter} />
+            <Item
+              value="latest"
+              label={filters.latest}
+              selected={activeFilter === 'latest'}
+              onChange={setActiveFilter}
+            />
+            <Item
+              value="popular"
+              label={filters.popular}
+              selected={activeFilter === 'popular'}
+              onChange={setActiveFilter}
+            />
+            <Item
+              value="history"
+              label={filters.history}
+              selected={activeFilter === 'history'}
+              onChange={setActiveFilter}
+            />
           </ul>
         </div>
         <div className={s.block}>
           <span className={s.title}>{tagsTitle}</span>
           <ul className={s.list}>
-            {mockTags.map(({ value, label }) => (
-              <Item key={value} value={value} label={label} selected={tags.includes(value)} onChange={setTags} />
+            {tags.map(({ id, name }) => (
+              <Item
+                key={id}
+                value={id}
+                label={name[activeLocale] || name['en']}
+                selected={activeTags.includes(id)}
+                onChange={setActiveTags}
+              />
             ))}
           </ul>
         </div>
