@@ -22,8 +22,19 @@ const GridCard = memo(({ resource }) => {
 
   return (
     <a href={resource.url} target="_blank" key={resource.id} className={s.root} rel="noopener noreferrer">
-      <div className={s.imageContainer}>
-        {/* <Image src={resource.image} alt={resource.title} className={s.image} layout="fill" objectFit="cover" /> */}
+      <div
+        className={s.imageContainer}
+        style={{
+          backgroundImage: `url(https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/w_640/e_blur:2000,q_1,f_auto/${resource.image})`,
+        }}
+      >
+        <Image
+          src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${resource.image}`}
+          alt={resource.title}
+          className={s.image}
+          layout="fill"
+          objectFit="cover"
+        />
         <div className={s.tags}>
           {resource.tags.map((tag) => (
             <span key={tag.id} className={s.tag}>

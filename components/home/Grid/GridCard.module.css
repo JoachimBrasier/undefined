@@ -7,7 +7,7 @@
 }
 
 .imageContainer {
-  @apply h-40 w-full relative;
+  @apply h-40 w-full relative bg-cover bg-center;
 }
 
 .image {
