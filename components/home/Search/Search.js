@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 import { MenuIcon } from '@heroicons/react/outline';
 
-import { useHomeContext } from 'components/pages/home';
+import { useHomeContext } from 'components/home';
 
 import locales from 'locales';
 

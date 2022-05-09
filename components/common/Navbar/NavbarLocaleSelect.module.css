@@ -28,9 +28,9 @@
 }
 
 .item .icon {
-  @apply h-4 w-4 ml-4 text-blue-600;
+  @apply h-4 w-4 ml-8 text-blue-600;
 }
 
 .divider {
-  @apply mx-auto w-full h-px bg-slate-900/10 dark:bg-slate-700;
+  @apply mx-auto w-full h-px bg-slate-900/10 dark:bg-slate-700 my-2;
 }

@@ -26,7 +26,10 @@
     "@headlessui/react": "^1.6.1",
     "@heroicons/react": "^1.0.6",
     "@prisma/client": "^3.13.0",
+    "babel-plugin-superjson-next": "^0.4.3",
+    "cloudinary": "^1.29.1",
     "clsx": "^1.1.1",
+    "formidable": "^2.0.1",
     "js-cookie": "^3.0.1",
     "next": "^12.1.6",
     "next-seo": "^5.4.0",
@@ -35,7 +38,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-popper": "^2.3.0",
-    "react-string-replace": "^1.1.0"
+    "react-string-replace": "^1.1.0",
+    "superjson": "^1.9.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",

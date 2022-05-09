@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { CheckIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 
-import { useHomeContext } from 'components/pages/home';
+import { useHomeContext } from 'components/home';
 
 import locales from 'locales';
 

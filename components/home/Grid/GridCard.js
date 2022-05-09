@@ -12,7 +12,6 @@ import s from './GridCard.module.css';
 
 // TODO add author et created date
 // TODO add placeholder image
-// TODO responsive mode for mobile
 // TODO select tag on click
 // TODO overlay on tags (bottom image)
 // TODO remove body scroll
@@ -24,11 +23,11 @@ const GridCard = memo(({ resource }) => {
   return (
     <a href={resource.url} target="_blank" key={resource.id} className={s.root} rel="noopener noreferrer">
       <div className={s.imageContainer}>
-        <Image src={resource.image} alt={resource.title} className={s.image} layout="fill" objectFit="cover" />
+        {/* <Image src={resource.image} alt={resource.title} className={s.image} layout="fill" objectFit="cover" /> */}
         <div className={s.tags}>
-          {resource.tags.map((tag, index) => (
-            <span key={index} className={s.tag}>
-              {tag}
+          {resource.tags.map((tag) => (
+            <span key={tag.id} className={s.tag}>
+              {tag.names[activeLocale] || tag.names['en']}
             </span>
           ))}
         </div>
@@ -42,7 +41,7 @@ const GridCard = memo(({ resource }) => {
           )}
           {resource.title}
         </h5>
-        <p className={s.description}>{resource.description[activeLocale]}</p>
+        <p className={s.description}>{resource.descriptions[activeLocale] || resource.descriptions['en']}</p>
       </div>
     </a>
   );

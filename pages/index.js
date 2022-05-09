@@ -1,16 +1,15 @@
-import { Grid, Hero, HomeProvider, List, Search, Sidebar } from 'components/pages/home';
+import { Grid, Hero, HomeProvider, Search, Sidebar } from 'components/home';
 
 import prisma from 'lib/prisma';
 
-const Home = ({ tags }) => (
+const Home = ({ tags, resources }) => (
   <HomeProvider>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
       <Sidebar tags={tags} />
       <div className="flex-grow">
         <Hero />
         <Search />
-        <Grid />
-        <List />
+        <Grid resources={resources} />
         <div />
       </div>
     </div>
@@ -18,9 +17,45 @@ const Home = ({ tags }) => (
 );
 
 export const getServerSideProps = async ({ locale: activeLocale }) => {
+  // Fetch all resources
+  const resources = await prisma.resource.findMany({
+    where: {
+      status: 'PUBLISHED',
+    },
+    include: {
+      descriptions: {
+        select: {
+          en: true, // Always include english
+          ...(activeLocale !== 'en' && { [activeLocale]: true }), // Include active locale
+        },
+      },
+      tags: {
+        select: {
+          id: true,
+          slug: true,
+          names: {
+            select: {
+              en: true, // Always include english
+              ...(activeLocale !== 'en' && { [activeLocale]: true }), // Include active locale
+            },
+          },
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  // Fetch all tags
   const tags = await prisma.tag.findMany({
     include: {
-      names: true, // Include all the locales
+      names: {
+        select: {
+          en: true, // Always include english
+          ...(activeLocale !== 'en' && { [activeLocale]: true }), // Include active locale
+        },
+      },
     },
   });
 
@@ -34,7 +69,7 @@ export const getServerSideProps = async ({ locale: activeLocale }) => {
     return aName.localeCompare(bName, activeLocale);
   });
 
-  return { props: { tags } };
+  return { props: { tags, resources } };
 };
 
 export default Home;
