@@ -38,4 +38,8 @@
   @apply shadow cursor-pointer text-xs leading-3 font-medium rounded-full px-2 py-1 text-slate-600 dark:text-slate-400 bg-slate-100/80 hover:bg-slate-300/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80;
 }
 
+.activeTag {
+  @apply text-white dark:text-white bg-blue-600 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-500;
+}
+
 .likes {}

@@ -2,8 +2,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { ExclamationIcon } from '@heroicons/react/outline';
+import clsx from 'clsx';
 import { memo } from 'react';
 
+import { useHomeContext } from 'components/home';
 import { Tooltip } from 'components/ui';
 
 import formatDate from 'lib/format-date';
@@ -21,6 +23,13 @@ import s from './GridCard.module.css';
 const GridCard = memo(({ resource }) => {
   const { locale: activeLocale } = useRouter();
   const { resourceDeprecated } = locales[activeLocale].pages.home;
+  const { activeTags, setActiveTags } = useHomeContext();
+
+  const onTagClick = (event, tag) => {
+    event.preventDefault();
+
+    setActiveTags(tag);
+  };
 
   return (
     <a href={resource.url} target="_blank" key={resource.id} className={s.root} rel="noopener noreferrer">
@@ -39,9 +48,13 @@ const GridCard = memo(({ resource }) => {
         />
         <div className={s.tags}>
           {resource.tags.map((tag) => (
-            <span key={tag.id} className={s.tag}>
+            <button
+              key={tag.id}
+              className={clsx(s.tag, { [s.activeTag]: activeTags.includes(tag.slug) })}
+              onClick={(e) => onTagClick(e, tag.slug)}
+            >
               {tag.names[activeLocale] || tag.names['en']}
-            </span>
+            </button>
           ))}
         </div>
       </div>
