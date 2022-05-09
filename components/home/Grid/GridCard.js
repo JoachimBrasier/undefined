@@ -6,6 +6,8 @@ import { memo } from 'react';
 
 import { Tooltip } from 'components/ui';
 
+import formatDate from 'lib/format-date';
+
 import locales from 'locales';
 
 import s from './GridCard.module.css';
@@ -44,6 +46,7 @@ const GridCard = memo(({ resource }) => {
         </div>
       </div>
       <div className={s.content}>
+        <small className={s.date}>{formatDate(resource.createdAt, activeLocale)}</small>
         <h5 className={s.title}>
           {resource.deprecated && (
             <Tooltip title={resourceDeprecated} placement="bottom">
