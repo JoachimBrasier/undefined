@@ -55,7 +55,7 @@ const Sidebar = ({ tags }) => {
         <div className={s.block}>
           <span className={s.title}>
             {tagsTitle}
-            <Link href="/translate/tags">
+            <Link href="/locales/tags">
               <a className={s.translateButton}>{tagsTranslate}</a>
             </Link>
           </span>
