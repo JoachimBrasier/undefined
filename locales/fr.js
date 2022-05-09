@@ -16,7 +16,7 @@ const fr = {
   components: {},
   pages: {
     home: {
-      resourceDeprecated: 'Obsolète',
+      resourceDeprecated: "Obsolète, soyez prudent lors de l'utilisation",
       searchPlaceholder: 'Rechercher...',
       hero: {
         title: 'Faites partie de la communauté',

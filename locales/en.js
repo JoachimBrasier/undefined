@@ -16,7 +16,7 @@ const en = {
   components: {},
   pages: {
     home: {
-      resourceDeprecated: 'Deprecated',
+      resourceDeprecated: 'Deprecated, be careful when using',
       searchPlaceholder: 'Search...',
       hero: {
         title: 'Be part of the community',
