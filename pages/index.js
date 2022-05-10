@@ -1,15 +1,16 @@
+import { getSession } from 'next-auth/react';
 import qs from 'qs';
 
 import { Grid, Hero, HomeProvider, Search, Sidebar } from 'components/home';
 
 import prisma from 'lib/prisma';
 
-const Home = ({ tags, resources, initialQuery }) => (
+const Home = ({ tags, resources, initialQuery, session }) => (
   <HomeProvider initialQuery={initialQuery}>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
       <Sidebar tags={tags} />
       <div className="flex-grow">
-        <Hero />
+        {!session && <Hero />}
         <Search />
         <Grid resources={resources} />
         <div />
@@ -18,8 +19,13 @@ const Home = ({ tags, resources, initialQuery }) => (
   </HomeProvider>
 );
 
-export const getServerSideProps = async ({ locale: activeLocale, query }) => {
-  query = qs.parse(query, { comma: true });
+// TODO favorites filter only when user is auth
+// TODO visited filter only when user is auth
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+  const { locale: activeLocale } = ctx;
+
+  const query = qs.parse(ctx.query, { comma: true });
 
   // Fetch all resources
   const resources = await prisma.resource.findMany({
@@ -78,6 +84,7 @@ export const getServerSideProps = async ({ locale: activeLocale, query }) => {
       tags,
       resources,
       initialQuery: query,
+      session,
     },
   };
 };

@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 
 import { CheckIcon, LockClosedIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
+import { useSession } from 'next-auth/react';
+import { memo } from 'react';
 
 import { useHomeContext } from 'components/home';
 import { Tooltip } from 'components/ui';
@@ -11,16 +13,17 @@ import locales from 'locales';
 
 import s from './Sidebar.module.css';
 
-const Item = ({ selected, onChange, label, value, isAuth = false }) => {
+const Item = memo(({ selected, onChange, label, value, authRequired = false }) => {
+  const { status } = useSession();
   const { locale: activeLocale } = useRouter();
   const { loginRequired } = locales[activeLocale];
 
-  if (isAuth) {
+  if (authRequired && status === 'unauthenticated') {
     return (
       <Tooltip title={loginRequired} placement="bottom">
         <li className={clsx(s.item, s.itemLocked)}>
           {label}
-          {isAuth && <LockClosedIcon className={s.icon} />}
+          <LockClosedIcon className={s.icon} />
         </li>
       </Tooltip>
     );
@@ -32,7 +35,9 @@ const Item = ({ selected, onChange, label, value, isAuth = false }) => {
       {selected && <CheckIcon className={s.icon} />}
     </li>
   );
-};
+});
+
+Item.displayName = 'Item';
 
 const Sidebar = ({ tags }) => {
   const { locale: activeLocale } = useRouter();
@@ -66,14 +71,14 @@ const Sidebar = ({ tags }) => {
               label={filters.history}
               selected={activeFilter === 'history'}
               onChange={setActiveFilter}
-              isAuth
+              authRequired
             />
             <Item
               value="favorites"
               label={filters.favorites}
               selected={activeFilter === 'favorites'}
               onChange={setActiveFilter}
-              isAuth
+              authRequired
             />
           </ul>
         </div>
