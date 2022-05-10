@@ -12,7 +12,7 @@ import 'styles/global.css';
 
 NProgress.configure({ showSpinner: false });
 
-Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeStart = (url, { shallow }) => !shallow && NProgress.start();
 Router.onRouteChangeError = () => NProgress.done();
 Router.onRouteChangeComplete = () => NProgress.done();
 
