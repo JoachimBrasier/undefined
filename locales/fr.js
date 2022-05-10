@@ -30,6 +30,7 @@ const fr = {
         latest: 'Date',
         popular: 'Popularité',
         history: 'Visités',
+        favorites: 'Favoris',
       },
       tagsTitle: 'Mots-clés',
       tagsTranslate: 'Traduire',

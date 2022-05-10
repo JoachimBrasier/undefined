@@ -50,6 +50,12 @@ const Sidebar = ({ tags }) => {
               selected={activeFilter === 'history'}
               onChange={setActiveFilter}
             />
+            <Item
+              value="favorites"
+              label={filters.favorites}
+              selected={activeFilter === 'favorites'}
+              onChange={setActiveFilter}
+            />
           </ul>
         </div>
         <div className={s.block}>

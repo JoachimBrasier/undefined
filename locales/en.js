@@ -30,6 +30,7 @@ const en = {
         latest: 'Date',
         popular: 'Popularity',
         history: 'Visited',
+        favorites: 'Favorites',
       },
       tagsTitle: 'Tags',
       tagsTranslate: 'Translate',
