@@ -1,9 +1,11 @@
+import qs from 'qs';
+
 import { Grid, Hero, HomeProvider, Search, Sidebar } from 'components/home';
 
 import prisma from 'lib/prisma';
 
-const Home = ({ tags, resources }) => (
-  <HomeProvider>
+const Home = ({ tags, resources, initialQuery }) => (
+  <HomeProvider initialQuery={initialQuery}>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
       <Sidebar tags={tags} />
       <div className="flex-grow">
@@ -16,7 +18,9 @@ const Home = ({ tags, resources }) => (
   </HomeProvider>
 );
 
-export const getServerSideProps = async ({ locale: activeLocale }) => {
+export const getServerSideProps = async ({ locale: activeLocale, query }) => {
+  query = qs.parse(query, { comma: true });
+
   // Fetch all resources
   const resources = await prisma.resource.findMany({
     where: {
@@ -69,7 +73,13 @@ export const getServerSideProps = async ({ locale: activeLocale }) => {
     return aName.localeCompare(bName, activeLocale);
   });
 
-  return { props: { tags, resources } };
+  return {
+    props: {
+      tags,
+      resources,
+      initialQuery: query,
+    },
+  };
 };
 
 export default Home;
