@@ -1,4 +1,5 @@
 const fr = {
+  newLocale: 'Nouvelle langue',
   themes: {
     light: 'Thème clair',
     dark: 'Thème sombre',

@@ -16,6 +16,7 @@ const { Button, Options, Option } = Listbox;
 const NavbarLocaleSelect = () => {
   const router = useRouter();
   const { locale: activeLocale } = router;
+  const { newLocale } = locales[activeLocale];
   const [selectedLocale, setSelectedLocale] = useState(locales.options.find((locale) => locale.value === activeLocale));
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const NavbarLocaleSelect = () => {
           <Option key="new" as={Fragment}>
             <Link href="/locales/new" passHref>
               <li className={s.item}>
-                New
+                {newLocale}
                 <PlusIcon className="h-4 w-4 ml-4" />
               </li>
             </Link>

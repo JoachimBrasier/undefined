@@ -1,4 +1,5 @@
 const en = {
+  newLocale: 'New locale',
   themes: {
     light: 'Light theme',
     dark: 'Dark theme',
