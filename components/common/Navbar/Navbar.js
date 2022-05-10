@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { useSession } from 'next-auth/react';
+
+import { UserNav } from 'components/common';
+
 import locales from 'locales';
 
 import NavbarLocaleSelect from './NavbarLocaleSelect';
@@ -9,6 +13,7 @@ import NavbarThemeToggler from './NavbarThemeToggler';
 import s from './Navbar.module.css';
 
 const Navbar = () => {
+  const { status } = useSession();
   const { locale: activeLocale } = useRouter();
   const { about } = locales[activeLocale].layout.navbar.links;
 
@@ -27,7 +32,8 @@ const Navbar = () => {
           <div className={s.divider} />
           <div className={s.actions}>
             <NavbarLocaleSelect />
-            <NavbarThemeToggler />
+            {['unauthenticated', 'loading'].includes(status) && <NavbarThemeToggler />}
+            <UserNav />
           </div>
         </div>
       </div>

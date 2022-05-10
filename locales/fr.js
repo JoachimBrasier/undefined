@@ -10,6 +10,10 @@ const fr = {
       links: {
         about: 'A propos',
       },
+      userNav: {
+        logout: 'Déconnexion',
+        settings: 'Paramètres',
+      },
     },
     footer: {
       loveMessage: 'Fait avec [icon-heart] pour les développeurs',

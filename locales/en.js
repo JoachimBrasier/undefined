@@ -10,6 +10,10 @@ const en = {
       links: {
         about: 'About',
       },
+      userNav: {
+        logout: 'Logout',
+        settings: 'Settings',
+      },
     },
     footer: {
       loveMessage: 'Made with [icon-heart] for developers',

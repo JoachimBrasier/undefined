@@ -2,10 +2,6 @@
   @apply relative;
 }
 
-.test {
-  @apply relative;
-}
-
 .button {
   @apply py-1 px-3 text-slate-600 dark:text-slate-400 rounded-full cursor-pointer text-xs leading-5 font-medium flex items-center;
   @apply bg-slate-100 hover:bg-slate-300/50 dark:bg-slate-800 dark:hover:bg-slate-700 !important;
@@ -20,7 +16,7 @@
 }
 
 .item {
-  @apply whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-2 py-0.5 flex items-center justify-between text-slate-600 dark:text-slate-400 text-sm leading-6 font-medium;
+  @apply select-none whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-2 py-0.5 flex items-center justify-between text-slate-600 dark:text-slate-400 text-sm leading-6 font-medium;
 }
 
 .itemSelected {

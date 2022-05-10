@@ -1,0 +1,24 @@
+.root {
+  @apply relative;
+}
+
+.button {
+  @apply relative h-8 w-8 rounded-full overflow-hidden;
+  @apply bg-slate-100 hover:bg-slate-300/50 dark:bg-slate-800 dark:hover:bg-slate-700 !important;
+}
+
+.image {
+  @apply h-full w-full;
+}
+
+.dropdown {
+  @apply absolute z-10 mt-1 right-0 min-w-full overflow-auto rounded-md bg-white dark:bg-slate-800 py-2 shadow focus:outline-none;
+}
+
+.item {
+  @apply select-none whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-2 py-0.5 flex items-center text-slate-600 dark:text-slate-400 text-sm leading-6 font-medium;
+}
+
+.icon {
+  @apply h-4 w-4 mr-2;
+}
