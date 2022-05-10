@@ -45,6 +45,7 @@ const GridCard = memo(({ resource }) => {
           className={s.image}
           layout="fill"
           objectFit="cover"
+          objectPosition="top"
         />
         <div className={s.tags}>
           {resource.tags.map((tag) => (
