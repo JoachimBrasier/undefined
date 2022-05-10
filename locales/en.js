@@ -1,5 +1,6 @@
 const en = {
   newLocale: 'New locale',
+  loginRequired: 'You must be logged in',
   themes: {
     light: 'Light theme',
     dark: 'Dark theme',

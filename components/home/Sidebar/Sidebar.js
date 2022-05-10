@@ -1,21 +1,38 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { CheckIcon, XIcon } from '@heroicons/react/outline';
+import { CheckIcon, LockClosedIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 
 import { useHomeContext } from 'components/home';
+import { Tooltip } from 'components/ui';
 
 import locales from 'locales';
 
 import s from './Sidebar.module.css';
 
-const Item = ({ selected, onChange, label, value }) => (
-  <li className={clsx(s.item, { [s.itemSelected]: selected })} onClick={() => onChange(value)}>
-    {label}
-    {selected && <CheckIcon className={s.icon} />}
-  </li>
-);
+const Item = ({ selected, onChange, label, value, isAuth = false }) => {
+  const { locale: activeLocale } = useRouter();
+  const { loginRequired } = locales[activeLocale];
+
+  if (isAuth) {
+    return (
+      <Tooltip title={loginRequired} placement="bottom">
+        <li className={clsx(s.item, s.itemLocked)}>
+          {label}
+          {isAuth && <LockClosedIcon className={s.icon} />}
+        </li>
+      </Tooltip>
+    );
+  }
+
+  return (
+    <li className={clsx(s.item, { [s.itemSelected]: selected })} onClick={() => onChange(value)}>
+      {label}
+      {selected && <CheckIcon className={s.icon} />}
+    </li>
+  );
+};
 
 const Sidebar = ({ tags }) => {
   const { locale: activeLocale } = useRouter();
@@ -49,12 +66,14 @@ const Sidebar = ({ tags }) => {
               label={filters.history}
               selected={activeFilter === 'history'}
               onChange={setActiveFilter}
+              isAuth
             />
             <Item
               value="favorites"
               label={filters.favorites}
               selected={activeFilter === 'favorites'}
               onChange={setActiveFilter}
+              isAuth
             />
           </ul>
         </div>

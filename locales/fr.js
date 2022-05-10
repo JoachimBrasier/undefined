@@ -1,5 +1,6 @@
 const fr = {
   newLocale: 'Nouvelle langue',
+  loginRequired: 'Vous devez être connecté',
   themes: {
     light: 'Thème clair',
     dark: 'Thème sombre',
