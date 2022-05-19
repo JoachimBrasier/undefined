@@ -21,6 +21,11 @@ const en = {
   },
   components: {},
   pages: {
+    notFound: {
+      sorry: "Sorry we can't find the page you're looking for...",
+      draw: 'Leave your most beautiful pixel art for the lost others.',
+      gallery: 'Here are all the works left by the lost',
+    },
     home: {
       resourceDeprecated: 'Deprecated, be careful when using',
       searchPlaceholder: 'Search...',
@@ -29,6 +34,11 @@ const en = {
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
         button: 'Login with GitHub',
+      },
+      proposal: {
+        title: "Don't be shy!",
+        description: 'Help us grow the resource collection by sharing your favorite one',
+        button: "Let's do it",
       },
       filters: {
         title: 'Filter by',

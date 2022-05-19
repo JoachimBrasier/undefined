@@ -14,7 +14,7 @@ import locales from 'locales';
 
 import s from './GridCard.module.css';
 
-// TODO add author et created date
+// TODO add author and created date
 // TODO add placeholder image
 // TODO select tag on click
 // TODO overlay on tags (bottom image)

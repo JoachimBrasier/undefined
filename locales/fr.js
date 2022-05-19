@@ -21,6 +21,11 @@ const fr = {
   },
   components: {},
   pages: {
+    notFound: {
+      sorry: 'Désolé, nous ne trouvons pas la page que vous cherchez...',
+      draw: 'Laissez votre plus beau pixel art pour les autres égarés.',
+      gallery: 'Voici toutes les oeuvres laissés par les égarés',
+    },
     home: {
       resourceDeprecated: "Obsolète, soyez prudent lors de l'utilisation",
       searchPlaceholder: 'Rechercher...',
@@ -29,6 +34,11 @@ const fr = {
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
         button: 'Connexion avec GitHub',
+      },
+      proposal: {
+        title: 'Ne soyez pas timide !',
+        description: 'Aidez-nous à agrandir la collection de ressources en partageant votre préférée',
+        button: 'Commencer',
       },
       filters: {
         title: 'Filtrer par',

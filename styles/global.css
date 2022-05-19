@@ -28,3 +28,19 @@ a, button, input, select, textarea {
 #nprogress .spinner-icon {
   @apply border-t-blue-600 border-l-blue-600;
 }
+
+.react-colorful__saturation {
+  @apply rounded border-none !important;
+}
+
+.react-colorful__saturation-pointer {
+  @apply h-4 w-4 !important;
+}
+
+.react-colorful__hue, .react-colorful__alpha {
+  @apply mt-4 h-2 rounded-full !important;
+}
+
+.react-colorful__hue-pointer, .react-colorful__alpha-pointer {
+  @apply w-4 h-4 rounded-full !important;
+}
