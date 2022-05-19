@@ -48,7 +48,7 @@ const Sidebar = ({ tags }) => {
     <>
       <div className={clsx(s.overlay, { [s.overlayVisible]: isSidebarOpen })} onClick={closeSidebar} />
       <div className={clsx(s.root, { [s.rootOpen]: isSidebarOpen })}>
-        <button className={clsx(s.button, { [s.buttonVisible]: isSidebarOpen })} onClick={closeSidebar}>
+        <button type="button" className={clsx(s.button, { [s.buttonVisible]: isSidebarOpen })} onClick={closeSidebar}>
           <XIcon className={s.icon} />
         </button>
         <div className={s.block}>

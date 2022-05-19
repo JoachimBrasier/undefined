@@ -110,15 +110,21 @@ const DrawingCanvas = () => {
       <div className={s.header}>
         <DrawingCanvasColorPicker preset={preset} color={strokeStyle} onChange={setStrokeStyle} />
         <button
+          type="button"
           className={clsx(s.tool, { [s.activeTool]: activeTool === 'fill' })}
           onClick={() => setActiveTool('fill')}
         >
           <FillColorIcon className="h-4 w-4" />
         </button>
-        <button className={clsx(s.tool, { [s.activeTool]: activeTool === 'pen' })} onClick={() => setActiveTool('pen')}>
+        <button
+          type="button"
+          className={clsx(s.tool, { [s.activeTool]: activeTool === 'pen' })}
+          onClick={() => setActiveTool('pen')}
+        >
           <PencilIcon className={s.icon} />
         </button>
         <button
+          type="button"
           className={clsx(s.tool, { [s.activeTool]: activeTool === 'picker' })}
           onClick={() => setActiveTool('picker')}
         >

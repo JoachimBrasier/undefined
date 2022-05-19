@@ -26,6 +26,7 @@ const DrawingCanvasColorPicker = ({ color, preset, onChange }) => {
         <div className={s.preset}>
           {preset.map((color, index) => (
             <button
+              type="button"
               key={index}
               className={s.color}
               style={{ backgroundColor: objectToColor(color) }}
