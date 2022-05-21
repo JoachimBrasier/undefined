@@ -3,11 +3,11 @@ import GridProposal from './GridProposal';
 
 import s from './Grid.module.css';
 
-const Grid = ({ resources }) => (
+const Grid = ({ resources, visits }) => (
   <div className={s.root}>
     <GridProposal />
     {resources.map((resource) => (
-      <GridCard key={resource.id} resource={resource} />
+      <GridCard key={resource.id} resource={resource} visited={visits.includes(resource.id)} />
     ))}
   </div>
 );

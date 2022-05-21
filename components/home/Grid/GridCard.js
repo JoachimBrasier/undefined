@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 
 import { ExclamationIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
-import { memo } from 'react';
+import { useSession } from 'next-auth/react';
+import { memo, useState } from 'react';
 
 import { useHomeContext } from 'components/home';
 import { Tooltip } from 'components/ui';
@@ -20,7 +21,9 @@ import s from './GridCard.module.css';
 // TODO overlay on tags (bottom image)
 // TODO remove body scroll
 // ? add likes
-const GridCard = memo(({ resource }) => {
+const GridCard = memo(({ resource, ...rest }) => {
+  const [visited, setVisited] = useState(rest.visited);
+  const { status, data } = useSession();
   const { locale: activeLocale } = useRouter();
   const { resourceDeprecated } = locales[activeLocale].pages.home;
   const { activeTags, setActiveTags } = useHomeContext();
@@ -31,8 +34,45 @@ const GridCard = memo(({ resource }) => {
     setActiveTags(tag);
   };
 
+  const handleVisit = async (event) => {
+    // if clicked on tags
+    if (event.target.type === 'button') {
+      return;
+    }
+
+    // if not authenticated
+    if (status !== 'authenticated') {
+      return;
+    }
+
+    // if already visited
+    if (visited) {
+      return;
+    }
+
+    const { id: userId } = data.user;
+    const { id: resourceId } = resource;
+
+    const result = await fetch(`/api/user/${userId}/visits`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ resourceId }),
+    });
+
+    if (result.status === 200) {
+      setVisited(true);
+    }
+  };
+
   return (
-    <a href={resource.url} target="_blank" key={resource.id} className={s.root} rel="noopener noreferrer">
+    <a
+      href={resource.url}
+      target="_blank"
+      key={resource.id}
+      className={clsx(s.root, { [s.rootVisited]: visited })}
+      rel="noopener noreferrer"
+      onClick={handleVisit}
+    >
       <div
         className={s.imageContainer}
         style={{
@@ -50,6 +90,7 @@ const GridCard = memo(({ resource }) => {
         <div className={s.tags}>
           {resource.tags.map((tag) => (
             <button
+              type="button"
               key={tag.id}
               className={clsx(s.tag, { [s.activeTag]: activeTags.includes(tag.slug) })}
               onClick={(e) => onTagClick(e, tag.slug)}

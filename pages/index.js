@@ -5,14 +5,14 @@ import { Grid, Hero, HomeProvider, Search, Sidebar } from 'components/home';
 
 import prisma from 'lib/prisma';
 
-const Home = ({ tags, resources, initialQuery, session }) => (
+const Home = ({ tags, resources, initialQuery, session, visits }) => (
   <HomeProvider initialQuery={initialQuery}>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
       <Sidebar tags={tags} />
       <div className="flex-grow">
         {!session && <Hero />}
         <Search />
-        <Grid resources={resources} />
+        <Grid resources={resources} visits={visits} />
         <div />
       </div>
     </div>
@@ -79,12 +79,34 @@ export const getServerSideProps = async (ctx) => {
     return aName.localeCompare(bName, activeLocale);
   });
 
+  let visits = [];
+
+  if (session) {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: session.user.id,
+      },
+      include: {
+        visits: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+
+    if (user) {
+      visits = user.visits.map((item) => item.id);
+    }
+  }
+
   return {
     props: {
       tags,
       resources,
       initialQuery: query,
       session,
+      visits,
     },
   };
 };
