@@ -15,12 +15,6 @@ import locales from 'locales';
 
 import s from './GridCard.module.css';
 
-// TODO add author and created date
-// TODO add placeholder image
-// TODO select tag on click
-// TODO overlay on tags (bottom image)
-// TODO remove body scroll
-// ? add likes
 const GridCard = memo(({ resource, ...rest }) => {
   const [visited, setVisited] = useState(rest.visited);
   const { status, data } = useSession();
