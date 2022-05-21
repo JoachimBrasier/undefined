@@ -3,7 +3,7 @@
 }
 
 .rootVisited {
-  @apply transition-opacity opacity-60 dark:opacity-40;
+  @apply transition-opacity opacity-50;
 }
 
 .content {
