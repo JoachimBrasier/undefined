@@ -3,8 +3,6 @@ import qs from 'qs';
 
 import { Grid, Hero, HomeProvider, Search, Sidebar } from 'components/home';
 
-import prisma from 'lib/prisma';
-
 const Home = ({ tags, resources, initialQuery, session, visits }) => (
   <HomeProvider initialQuery={initialQuery}>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
@@ -22,82 +20,24 @@ const Home = ({ tags, resources, initialQuery, session, visits }) => (
 // TODO favorites filter only when user is auth
 // TODO visited filter only when user is auth
 export const getServerSideProps = async (ctx) => {
+  const headers = { Cookie: ctx.req.headers.cookie };
   const session = await getSession(ctx);
-  const { locale: activeLocale } = ctx;
 
   const query = qs.parse(ctx.query, { comma: true });
 
   // Fetch all resources
-  const resources = await prisma.resource.findMany({
-    where: {
-      status: 'PUBLISHED',
-    },
-    include: {
-      descriptions: {
-        select: {
-          en: true, // Always include english
-          ...(activeLocale !== 'en' && { [activeLocale]: true }), // Include active locale
-        },
-      },
-      tags: {
-        select: {
-          id: true,
-          slug: true,
-          names: {
-            select: {
-              en: true, // Always include english
-              ...(activeLocale !== 'en' && { [activeLocale]: true }), // Include active locale
-            },
-          },
-        },
-      },
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
+  let resources = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/resources`, { headers: headers });
+  resources = await resources.json();
 
   // Fetch all tags
-  const tags = await prisma.tag.findMany({
-    include: {
-      names: {
-        select: {
-          en: true, // Always include english
-          ...(activeLocale !== 'en' && { [activeLocale]: true }), // Include active locale
-        },
-      },
-    },
-  });
-
-  // Sort alphabetically regardless of the active locale
-  tags.sort((a, b) => {
-    // Select the value that match active locale
-    // Fallback to english if there is none
-    const aName = a.names[activeLocale] || a.names['en'];
-    const bName = b.names[activeLocale] || b.names['en'];
-
-    return aName.localeCompare(bName, activeLocale);
-  });
+  let tags = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/tags`, { headers: headers });
+  tags = await tags.json();
 
   let visits = [];
 
   if (session) {
-    const user = await prisma.user.findUnique({
-      where: {
-        id: session.user.id,
-      },
-      include: {
-        visits: {
-          select: {
-            id: true,
-          },
-        },
-      },
-    });
-
-    if (user) {
-      visits = user.visits.map((item) => item.id);
-    }
+    visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/visits`, { headers: headers });
+    visits = await visits.json();
   }
 
   return {

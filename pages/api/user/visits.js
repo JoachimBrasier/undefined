@@ -8,7 +8,7 @@ const schema = Joi.object({
   resourceId: Joi.number().required(),
 });
 
-const handlePUT = withJoi(async (req, res) => {
+const handlePUT = async (req, res) => {
   const resource = await prisma.resource.findUnique({ where: { id: req.body.resourceId } });
 
   if (!resource) {
@@ -27,16 +27,16 @@ const handlePUT = withJoi(async (req, res) => {
   });
 
   return res.status(200).json(result);
-}, schema);
+};
 
 const handleGET = async (req, res) => {
-  let visits = [];
+  const session = req.session;
 
-  const user = await prisma.user.findUnique({
+  let visits = await prisma.user.findUnique({
     where: {
       id: session.user.id,
     },
-    include: {
+    select: {
       visits: {
         select: {
           id: true,
@@ -45,7 +45,7 @@ const handleGET = async (req, res) => {
     },
   });
 
-  visits = user.visits.map((item) => item.id);
+  visits = visits.visits.map((item) => item.id);
 
   return res.status(200).json(visits);
 };
@@ -55,10 +55,10 @@ const handler = async (req, res) => {
     case 'GET':
       return handleGET(req, res);
     case 'PUT':
-      return handlePUT(req, res);
+      return withJoi(handlePUT(req, res), schema);
     default:
       return res.status(405).json();
   }
 };
 
-export default withAuth(handler, { sameUser: true });
+export default withAuth(handler);
