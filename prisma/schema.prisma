@@ -32,7 +32,7 @@ model ResourceDescriptions {
   resourceId Int      @unique
   resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
   en         String
-  fr         String
+  fr         String?
 }
 
 enum ResourceStatus {
@@ -48,11 +48,11 @@ model Tag {
 }
 
 model TagNames {
-  id    Int    @id @default(autoincrement())
-  tagId Int    @unique
-  tag   Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  id    Int     @id @default(autoincrement())
+  tagId Int     @unique
+  tag   Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
   en    String
-  fr    String
+  fr    String?
 }
 
 model Report {
