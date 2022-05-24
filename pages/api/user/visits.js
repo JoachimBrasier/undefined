@@ -9,6 +9,7 @@ const putSchema = Joi.object({
 });
 
 const handlePUT = withJoi(async (req, res) => {
+  const session = req.session;
   const resource = await prisma.resource.findUnique({ where: { id: req.body.resourceId } });
 
   if (!resource) {
@@ -17,7 +18,7 @@ const handlePUT = withJoi(async (req, res) => {
 
   const result = await prisma.user.update({
     where: {
-      id: req.query.userId,
+      id: session.user.id,
     },
     data: {
       visits: {

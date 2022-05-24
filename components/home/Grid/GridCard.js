@@ -17,7 +17,7 @@ import s from './GridCard.module.css';
 
 const GridCard = memo(({ resource, ...rest }) => {
   const [visited, setVisited] = useState(rest.visited);
-  const { status, data } = useSession();
+  const { status } = useSession();
   const { locale: activeLocale } = useRouter();
   const { resourceDeprecated } = locales[activeLocale].pages.home;
   const { activeTags, setActiveTags } = useHomeContext();
@@ -44,10 +44,9 @@ const GridCard = memo(({ resource, ...rest }) => {
       return;
     }
 
-    const { id: userId } = data.user;
     const { id: resourceId } = resource;
 
-    const result = await fetch(`/api/user/${userId}/visits`, {
+    const result = await fetch(`/api/user/visits`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ resourceId }),
