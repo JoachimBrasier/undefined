@@ -7,6 +7,7 @@ module.exports = {
   images: {
     domains: ['res.cloudinary.com', 'avatars.githubusercontent.com'],
   },
+  rewrites: async () => [{ source: '/new-resource', destination: '/resources/new' }],
   // Fix dark mode in CSS modules
   // See https://github.com/tailwindlabs/tailwindcss/discussions/3109#discussioncomment-1632726
   webpack: (config) => {

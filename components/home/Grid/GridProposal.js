@@ -32,7 +32,7 @@ const GridProposal = () => {
       <div className={s.content}>
         <h3 className={s.title}>{title}</h3>
         <p className={s.description}>{description}</p>
-        <Link href="/proposal">
+        <Link href="/resources/new" as="/new-resource">
           <a className={s.link}>
             {button}
             <ArrowRightIcon className={s.icon} />
