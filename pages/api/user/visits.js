@@ -4,11 +4,11 @@ import withAuth from 'lib/middlewares/withAuth';
 import withJoi from 'lib/middlewares/withJoi';
 import prisma from 'lib/prisma';
 
-const putSchema = Joi.object({
+const schema = Joi.object({
   resourceId: Joi.number().required(),
 });
 
-const handlePUT = async (req, res) => {
+const handlePUT = withJoi(async (req, res) => {
   const resource = await prisma.resource.findUnique({ where: { id: req.body.resourceId } });
 
   if (!resource) {
@@ -27,7 +27,7 @@ const handlePUT = async (req, res) => {
   });
 
   return res.status(200).json(result);
-};
+}, putSchema);
 
 const handleGET = async (req, res) => {
   const session = req.session;
@@ -55,7 +55,7 @@ const handler = async (req, res) => {
     case 'GET':
       return handleGET(req, res);
     case 'PUT':
-      return withJoi(handlePUT(req, res), putSchema);
+      return handlePUT(req, res);
     default:
       return res.status(405).json();
   }
