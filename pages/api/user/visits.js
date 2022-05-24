@@ -4,7 +4,7 @@ import withAuth from 'lib/middlewares/withAuth';
 import withJoi from 'lib/middlewares/withJoi';
 import prisma from 'lib/prisma';
 
-const schema = Joi.object({
+const putSchema = Joi.object({
   resourceId: Joi.number().required(),
 });
 
@@ -55,7 +55,7 @@ const handler = async (req, res) => {
     case 'GET':
       return handleGET(req, res);
     case 'PUT':
-      return withJoi(handlePUT(req, res), schema);
+      return withJoi(handlePUT(req, res), putSchema);
     default:
       return res.status(405).json();
   }
