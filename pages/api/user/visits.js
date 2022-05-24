@@ -4,7 +4,7 @@ import withAuth from 'lib/middlewares/withAuth';
 import withJoi from 'lib/middlewares/withJoi';
 import prisma from 'lib/prisma';
 
-const schema = Joi.object({
+const putSchema = Joi.object({
   resourceId: Joi.number().required(),
 });
 
