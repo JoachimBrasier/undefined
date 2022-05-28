@@ -1,4 +1,3 @@
-import cookie from 'cookie';
 import Joi from 'joi';
 
 import withAuth from 'lib/middlewares/withAuth';
@@ -6,8 +5,7 @@ import withJoi from 'lib/middlewares/withJoi';
 import prisma from 'lib/prisma';
 
 const handleGET = async (req, res) => {
-  const cookies = cookie.parse(req.headers.cookie ?? '');
-  const activeLocale = cookies.NEXT_LOCALE || 'en';
+  const activeLocale = req.headers.locale ?? 'en';
 
   const resources = await prisma.resource.findMany({
     where: {

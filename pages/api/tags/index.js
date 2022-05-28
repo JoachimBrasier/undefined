@@ -1,10 +1,7 @@
-import cookie from 'cookie';
-
 import prisma from 'lib/prisma';
 
 const handler = async (req, res) => {
-  const cookies = cookie.parse(req.headers.cookie ?? '');
-  const activeLocale = cookies.NEXT_LOCALE || 'en';
+  const activeLocale = req.headers.locale ?? 'en';
 
   const tags = await prisma.tag.findMany({
     include: {

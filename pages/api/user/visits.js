@@ -10,6 +10,7 @@ const putSchema = Joi.object({
 
 const handlePUT = withJoi(async (req, res) => {
   const session = req.session;
+
   const resource = await prisma.resource.findUnique({ where: { id: req.body.resourceId } });
 
   if (!resource) {

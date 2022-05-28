@@ -20,23 +20,24 @@ const Home = ({ tags, resources, initialQuery, session, visits }) => (
 // TODO favorites filter only when user is auth
 // TODO visited filter only when user is auth
 export const getServerSideProps = async (ctx) => {
-  const headers = { Cookie: ctx.req.headers.cookie };
+  const { locale: activeLocale } = ctx;
+  const headers = { Locale: activeLocale, Cookie: ctx.req.headers.cookie };
   const session = await getSession(ctx);
 
   const query = qs.parse(ctx.query, { comma: true });
 
   // Fetch all resources
-  let resources = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/resources`, { headers: headers });
+  let resources = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/resources`, { headers });
   resources = await resources.json();
 
   // Fetch all tags
-  let tags = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/tags`, { headers: headers });
+  let tags = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/tags`, { headers });
   tags = await tags.json();
 
   let visits = [];
 
   if (session) {
-    visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/visits`, { headers: headers });
+    visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/visits`, { headers });
     visits = await visits.json();
   }
 
