@@ -110,11 +110,11 @@ const handleGET = async (req, res) => {
     },
     orderBy: {
       ...(!filter && { createdAt: 'desc' }),
-      ...(filter === 'popular' && {
-        visits: {
-          _count: 'desc',
-        },
-      }),
+      // ...(filter === 'popular' && {
+      //   visits: {
+      //     _count: 'desc',
+      //   },
+      // }),
     },
   });
 
