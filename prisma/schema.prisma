@@ -115,6 +115,8 @@ model UserVisit {
   resourceId Int
   resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
   visitedAt  DateTime
+
+  @@unique([userId, resourceId])
 }
 
 model VerificationToken {

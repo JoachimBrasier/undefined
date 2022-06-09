@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 
+import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
@@ -10,11 +11,13 @@ import GridProposal from './GridProposal';
 
 import s from './Grid.module.css';
 
-const Grid = ({ visits }) => {
+const Grid = () => {
   const [mounted, setMounted] = useState(false);
   const { locale: activeLocale } = useRouter();
   const { queryString } = useHomeContext();
-  const { data, isValidating, mutate } = useSWR(`/api/resources?${queryString}`);
+  const { status } = useSession();
+  const { data: resources, isValidating, mutate: mutateResources } = useSWR(`/api/resources?${queryString}`);
+  const { data: visits, mutate: mutateVisits } = useSWR(status === 'authenticated' ? '/api/user/visits' : null);
 
   useEffect(() => {
     if (!mounted) {
@@ -24,17 +27,22 @@ const Grid = ({ visits }) => {
 
   useEffect(() => {
     if (mounted) {
-      mutate();
+      mutateResources();
     }
   }, [activeLocale]);
 
   return (
     <div className={s.root}>
       <GridProposal />
-      {isValidating && !data
+      {isValidating && !resources
         ? 'Chargement...'
-        : data?.map((resource) => (
-            <GridCard key={resource.id} resource={resource} visited={visits.includes(resource.id)} />
+        : resources?.map((resource) => (
+            <GridCard
+              key={resource.id}
+              resource={resource}
+              visited={visits?.includes(resource.id)}
+              onVisit={(resourceId) => mutateVisits([...visits, resourceId])}
+            />
           ))}
     </div>
   );

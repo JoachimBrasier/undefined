@@ -60,6 +60,7 @@ export const getServerSideProps = async (ctx) => {
       visits,
       fallback: {
         [`/api/resources?${queryString}`]: resources,
+        ...(session && { '/api/user/visits': visits }),
       },
     },
   };

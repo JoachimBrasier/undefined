@@ -46,13 +46,13 @@ const handleGET = async (req, res) => {
     select: {
       visits: {
         select: {
-          id: true,
+          resourceId: true,
         },
       },
     },
   });
 
-  visits = visits.visits.map((item) => item.id);
+  visits = visits.visits.map((item) => item.resourceId);
 
   return res.status(200).json(visits);
 };

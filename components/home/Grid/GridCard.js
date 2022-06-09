@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { ExclamationIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { useSession } from 'next-auth/react';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 import { useHomeContext } from 'components/home';
 import { Tooltip } from 'components/ui';
@@ -15,8 +15,7 @@ import locales from 'locales';
 
 import s from './GridCard.module.css';
 
-const GridCard = memo(({ resource, ...rest }) => {
-  const [visited, setVisited] = useState(rest.visited);
+const GridCard = memo(({ resource, onVisit, visited }) => {
   const { status } = useSession();
   const { locale: activeLocale } = useRouter();
   const { resourceDeprecated } = locales[activeLocale].pages.home;
@@ -53,7 +52,7 @@ const GridCard = memo(({ resource, ...rest }) => {
     });
 
     if (result.status === 200) {
-      setVisited(true);
+      onVisit(resourceId);
     }
   };
 
