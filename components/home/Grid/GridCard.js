@@ -66,7 +66,7 @@ const GridCard = memo(({ resource, ...rest }) => {
       rel="noopener noreferrer"
       onClick={handleVisit}
     >
-      <div
+      {/* <div
         className={s.imageContainer}
         style={{
           backgroundImage: `url(https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/w_640/e_blur:2000,q_1,f_auto/${resource.image})`,
@@ -92,7 +92,7 @@ const GridCard = memo(({ resource, ...rest }) => {
             </button>
           ))}
         </div>
-      </div>
+      </div> */}
       <div className={s.content}>
         <small className={s.date}>{formatDate(resource.createdAt, activeLocale)}</small>
         <h5 className={s.title}>

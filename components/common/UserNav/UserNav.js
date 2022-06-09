@@ -30,7 +30,7 @@ const UserNav = () => {
       <Listbox>
         <div className={s.root}>
           <Button className={s.button}>
-            <Image className={s.image} src={data.user.image} alt={data.user.username} layout="fill" objectFit="cover" />
+            {/* <Image className={s.image} src={data.user.image} alt={data.user.username} layout="fill" objectFit="cover" /> */}
           </Button>
           <Options className={s.dropdown}>
             <Option key="settings" as={Fragment}>

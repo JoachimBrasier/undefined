@@ -22,7 +22,7 @@ model Resource {
   deprecated   Boolean               @default(false)
   authorId     String?
   author       User?                 @relation(fields: [authorId], references: [id])
-  visitedBy    User[]                @relation(name: "userVisits")
+  visits       UserVisit[]
   createdAt    DateTime              @default(now())
   updatedAt    DateTime              @updatedAt
 }
@@ -97,15 +97,24 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            String      @id @default(cuid())
   username      String
-  email         String     @unique
+  email         String      @unique
   emailVerified DateTime?
   image         String
   accounts      Account[]
   sessions      Session[]
   resources     Resource[]
-  visits        Resource[] @relation(name: "userVisits")
+  visits        UserVisit[]
+}
+
+model UserVisit {
+  id         Int      @id @default(autoincrement())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resourceId Int
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  visitedAt  DateTime
 }
 
 model VerificationToken {

@@ -5,9 +5,9 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useReducer 
 
 const initialState = {
   isSidebarOpen: false,
-  activeFilter: 'latest',
+  activeFilter: null,
   activeTags: [],
-  search: '',
+  search: null,
 };
 
 const HomeContext = createContext(initialState);
@@ -15,7 +15,8 @@ const HomeContext = createContext(initialState);
 const homeReducer = (state, action) => {
   switch (action.type) {
     case 'SET_SEARCH':
-      return { ...state, search: action.value };
+      const searchValue = action.value === '' ? null : action.value;
+      return { ...state, search: searchValue };
     case 'SET_TAGS':
       const newTags = [...state.activeTags];
 
@@ -41,13 +42,19 @@ const homeReducer = (state, action) => {
 };
 
 export const HomeProvider = ({ children, initialQuery }) => {
+  const [state, dispatch] = useReducer(homeReducer, { ...initialState, ...initialQuery });
   const router = useRouter();
-  const [state, dispatch] = useReducer(homeReducer, initialState);
 
   const isSidebarOpen = useMemo(() => state.isSidebarOpen, [state.isSidebarOpen]);
   const activeFilter = useMemo(() => state.activeFilter, [state.activeFilter]);
   const activeTags = useMemo(() => state.activeTags, [state.activeTags]);
   const search = useMemo(() => state.search, [state.search]);
+  const queryString = useMemo(() => {
+    return qs.stringify(
+      { search: state.search, filter: state.activeFilter, tags: state.activeTags },
+      { arrayFormat: 'comma', encodeValuesOnly: true, skipNulls: true },
+    );
+  }, [state.activeFilter, state.activeTags, state.search]);
 
   const toggleSidebar = useCallback(() => dispatch({ type: 'TOGGLE_SIDEBAR' }), [dispatch]);
   const openSidebar = useCallback(() => dispatch({ type: 'OPEN_SIDEBAR' }), [dispatch]);
@@ -57,17 +64,8 @@ export const HomeProvider = ({ children, initialQuery }) => {
   const setSearch = useCallback((value) => dispatch({ type: 'SET_SEARCH', value }), [dispatch]);
 
   useEffect(() => {
-    const query = qs.stringify(
-      {
-        ...(search !== initialState.search && { search }),
-        ...(activeFilter !== initialState.activeFilter && { filter: activeFilter }),
-        ...(activeTags.length !== 0 && { tags: activeTags }),
-      },
-      { arrayFormat: 'comma', encodeValuesOnly: true },
-    );
-
-    router.push('/', { query }, { shallow: true });
-  }, [state]);
+    router.push('/', { query: queryString }, { shallow: true });
+  }, [queryString]);
 
   const value = useMemo(
     () => ({
@@ -81,6 +79,7 @@ export const HomeProvider = ({ children, initialQuery }) => {
       closeSidebar,
       setActiveFilter,
       setActiveTags,
+      queryString,
     }),
     [
       isSidebarOpen,
@@ -93,6 +92,7 @@ export const HomeProvider = ({ children, initialQuery }) => {
       closeSidebar,
       setActiveFilter,
       setActiveTags,
+      queryString,
     ],
   );
 

@@ -23,7 +23,12 @@ const handlePUT = withJoi(async (req, res) => {
     },
     data: {
       visits: {
-        connect: [{ id: req.body.resourceId }],
+        create: [
+          {
+            resourceId: req.body.resourceId,
+            visitedAt: new Date().toISOString(),
+          },
+        ],
       },
     },
   });

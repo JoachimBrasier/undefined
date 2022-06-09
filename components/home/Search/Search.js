@@ -24,7 +24,7 @@ const Search = () => {
       </button>
       <input
         className={s.input}
-        // defaultValue={search}
+        defaultValue={search}
         onChange={(e) => debounceSetSearch(e.target.value)}
         placeholder={searchPlaceholder}
       />

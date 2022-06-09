@@ -3,31 +3,36 @@ import qs from 'qs';
 
 import { Grid, Hero, HomeProvider, Search, Sidebar } from 'components/home';
 
-const Home = ({ tags, resources, initialQuery, session, visits }) => (
+const Home = ({ tags, initialQuery, session, visits }) => (
   <HomeProvider initialQuery={initialQuery}>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
       <Sidebar tags={tags} />
       <div className="flex-grow">
         {!session && <Hero />}
         <Search />
-        <Grid resources={resources} visits={visits} />
+        <Grid visits={visits} />
         <div />
       </div>
     </div>
   </HomeProvider>
 );
 
-// TODO favorites filter only when user is auth
-// TODO visited filter only when user is auth
+// TODO visited & favorites filter only when user is auth
 export const getServerSideProps = async (ctx) => {
   const { locale: activeLocale } = ctx;
+  const availableFilters = ['popular', 'history', 'favorites'];
   const headers = { Locale: activeLocale, Cookie: ctx.req.headers.cookie };
   const session = await getSession(ctx);
 
-  const query = qs.parse(ctx.query, { comma: true });
+  let query = qs.parse(ctx.query, { comma: true });
+  query.filter = availableFilters.includes(query.filter) ? query.filter : null;
+  query.tags = typeof query.tags === 'undefined' ? [] : Array.isArray(query.tags) ? query.tags : [query.tags];
+  query.search = typeof query.search === 'string' ? query.search : null;
+
+  let queryString = qs.stringify(query, { arrayFormat: 'comma', encodeValuesOnly: true, skipNulls: true });
 
   // Fetch all resources
-  let resources = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/resources`, { headers });
+  let resources = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/resources?${queryString}`, { headers });
   resources = await resources.json();
 
   // Fetch all tags
@@ -36,6 +41,8 @@ export const getServerSideProps = async (ctx) => {
 
   let visits = [];
 
+  // Fetch user visited resources
+  // Only when user is auth
   if (session) {
     visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/visits`, { headers });
     visits = await visits.json();
@@ -43,11 +50,17 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
+      initialQuery: {
+        activeFilter: query.filter ?? null,
+        activeTags: query.tags ?? [],
+        search: query.search ?? null,
+      },
       tags,
-      resources,
-      initialQuery: query,
       session,
       visits,
+      fallback: {
+        [`/api/resources?${queryString}`]: resources,
+      },
     },
   };
 };

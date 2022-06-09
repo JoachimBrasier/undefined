@@ -54,12 +54,7 @@ const Sidebar = ({ tags }) => {
         <div className={s.block}>
           <span className={s.title}>{filters.title}</span>
           <ul className={s.list}>
-            <Item
-              value="latest"
-              label={filters.latest}
-              selected={activeFilter === 'latest'}
-              onChange={setActiveFilter}
-            />
+            <Item value={null} label={filters.latest} selected={activeFilter === null} onChange={setActiveFilter} />
             <Item
               value="popular"
               label={filters.popular}

@@ -14,7 +14,7 @@ const GridProposal = () => {
 
   return (
     <div className={s.root}>
-      <div
+      {/* <div
         className={s.imageContainer}
         style={{
           backgroundImage: `url(https://res.cloudinary.com/dtqosun31/image/upload/w_640/e_blur:2000,q_1,f_auto/sharingcaring-01_kccuip.webp)`,
@@ -28,7 +28,7 @@ const GridProposal = () => {
           objectFit="cover"
           objectPosition="center"
         />
-      </div>
+      </div> */}
       <div className={s.content}>
         <h3 className={s.title}>{title}</h3>
         <p className={s.description}>{description}</p>

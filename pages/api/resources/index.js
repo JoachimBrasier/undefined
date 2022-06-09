@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import qs from 'qs';
 
 import withAuth from 'lib/middlewares/withAuth';
 import withJoi from 'lib/middlewares/withJoi';
@@ -6,13 +7,75 @@ import prisma from 'lib/prisma';
 
 const handleGET = async (req, res) => {
   const activeLocale = req.headers.locale ?? 'en';
+  const { filter, tags, search } = qs.parse(req.query, { comma: true });
+  const cleanTags = typeof tags === 'undefined' ? [] : Array.isArray(tags) ? tags : [tags];
 
   const resources = await prisma.resource.findMany({
     where: {
       status: 'PUBLISHED',
-    },
-    orderBy: {
-      createdAt: 'desc',
+      ...(typeof search === 'string' && {
+        OR: [
+          {
+            title: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            descriptions: {
+              en: {
+                contains: search,
+                mode: 'insensitive',
+              },
+            },
+          },
+          {
+            ...(activeLocale !== 'en' && {
+              descriptions: {
+                [activeLocale]: {
+                  contains: search,
+                  mode: 'insensitive',
+                },
+              },
+            }),
+          },
+          {
+            tags: {
+              some: {
+                names: {
+                  en: {
+                    contains: search,
+                    mode: 'insensitive',
+                  },
+                },
+              },
+            },
+          },
+          {
+            ...(activeLocale !== 'en' && {
+              tags: {
+                some: {
+                  names: {
+                    [activeLocale]: {
+                      contains: search,
+                      mode: 'insensitive',
+                    },
+                  },
+                },
+              },
+            }),
+          },
+        ],
+      }),
+      ...(cleanTags.length !== 0 && {
+        tags: {
+          some: {
+            slug: {
+              in: tags,
+            },
+          },
+        },
+      }),
     },
     include: {
       descriptions: {
@@ -41,9 +104,17 @@ const handleGET = async (req, res) => {
       },
       _count: {
         select: {
-          visitedBy: true,
+          visits: true,
         },
       },
+    },
+    orderBy: {
+      ...(!filter && { createdAt: 'desc' }),
+      ...(filter === 'popular' && {
+        visits: {
+          _count: 'desc',
+        },
+      }),
     },
   });
 
