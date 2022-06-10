@@ -10,14 +10,10 @@ const DangerZone = () => {
 
   return (
     <>
-      <h3 className="text-lg font-semibold leading-6 text-slate-900 dark:text-slate-200 mb-4 pb-4 first:mt-0 mt-8 flex items-center border-b border-slate-900/10 dark:border-slate-700">
-        {exportData.title}
-      </h3>
-      <p className="text-base leading-5 text-slate-700 dark:text-slate-400">{exportData.description}</p>
-      <h3 className="text-lg font-semibold leading-6 text-slate-900 dark:text-slate-200 mb-4 pb-4 first:mt-0 mt-8 flex items-center border-b border-slate-900/10 dark:border-slate-700">
-        {deleteAccount.title}
-      </h3>
-      <p className="text-base leading-5 text-slate-700 dark:text-slate-400">{deleteAccount.description}</p>
+      <h3 className={s.title}>{exportData.title}</h3>
+      <p className={s.description}>{exportData.description}</p>
+      <h3 className={s.title}>{deleteAccount.title}</h3>
+      <p className={s.description}>{deleteAccount.description}</p>
     </>
   );
 };
