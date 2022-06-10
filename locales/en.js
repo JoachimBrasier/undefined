@@ -57,9 +57,11 @@ const en = {
           title: 'Display',
           ThemePreferences: {
             title: 'Theme preferences',
+            description: '',
           },
           visitedResources: {
             title: 'Visited resources',
+            description: '',
           },
         },
         profile: {
@@ -69,15 +71,18 @@ const en = {
           title: 'Account',
           changeEmail: {
             title: 'Change email',
+            description: '',
           },
         },
         dangerZone: {
           title: 'Danger zone',
           exportData: {
             title: 'Export account data',
+            description: '',
           },
           deleteAccount: {
             title: 'Delete account',
+            description: 'Deleting your account is irreversible...',
           },
         },
       },

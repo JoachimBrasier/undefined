@@ -20,7 +20,7 @@
 }
 
 .description {
-  @apply text-sm leading-5 text-slate-700 dark:text-slate-400 mb-4;
+  @apply text-base leading-5 text-slate-700 dark:text-slate-400 mb-4;
 }
 
 .link {
