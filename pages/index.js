@@ -7,7 +7,7 @@ const Home = ({ tags, initialQuery, session, visits }) => (
   <HomeProvider initialQuery={initialQuery}>
     <div className="w-full max-w-screen-xl mx-auto px-4 py-6 flex gap-6">
       <Sidebar tags={tags} />
-      <div className="flex-grow">
+      <div className="grow">
         {!session && <Hero />}
         <Search />
         <Grid visits={visits} />
