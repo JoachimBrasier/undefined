@@ -51,6 +51,37 @@ const en = {
       tagsTranslate: 'Translate',
     },
     about: {},
+    user: {
+      settings: {
+        display: {
+          title: 'Display',
+          ThemePreferences: {
+            title: 'Theme preferences',
+          },
+          visitedResources: {
+            title: 'Visited resources',
+          },
+        },
+        profile: {
+          title: 'Profile',
+        },
+        account: {
+          title: 'Account',
+          changeEmail: {
+            title: 'Change email',
+          },
+        },
+        dangerZone: {
+          title: 'Danger zone',
+          exportData: {
+            title: 'Export account data',
+          },
+          deleteAccount: {
+            title: 'Delete account',
+          },
+        },
+      },
+    },
   },
 };
 
