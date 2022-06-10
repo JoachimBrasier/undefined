@@ -10,7 +10,7 @@ const Account = () => {
 
   return (
     <>
-      <h3 className="text-lg font-semibold leading-6 text-slate-900 dark:text-slate-200 mb-2 pb-2 flex items-center border-b border-slate-900/10 dark:border-slate-700">
+      <h3 className="text-lg font-semibold leading-6 text-slate-900 dark:text-slate-200 mb-4 pb-4 first:mt-0 mt-8 flex items-center border-b border-slate-900/10 dark:border-slate-700">
         {changeEmail.title}
       </h3>
     </>
