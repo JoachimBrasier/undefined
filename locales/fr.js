@@ -57,11 +57,12 @@ const fr = {
           title: 'Affichage',
           ThemePreferences: {
             title: 'Thème préféré',
-            description: '',
+            description: 'Sélectionnez votre thème préféré entre le clair et le sombre.',
           },
           visitedResources: {
             title: 'Ressources visitées',
-            description: '',
+            checkbox: "Afficher les ressources visités sur la page d'accueil",
+            description: "L'activer ajoutera un filtre d'opacité sur les ressources que vous avez déjà visitées.",
           },
         },
         profile: {

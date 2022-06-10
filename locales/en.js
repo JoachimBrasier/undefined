@@ -57,11 +57,12 @@ const en = {
           title: 'Display',
           ThemePreferences: {
             title: 'Theme preferences',
-            description: '',
+            description: 'Select your favorite theme between light and dark.',
           },
           visitedResources: {
             title: 'Visited resources',
-            description: '',
+            checkbox: 'Show visited resources on home page',
+            description: 'Enabling this will add an opacity filter on resources you already visited.',
           },
         },
         profile: {
