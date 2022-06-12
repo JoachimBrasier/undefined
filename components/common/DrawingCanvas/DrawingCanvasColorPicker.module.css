@@ -3,7 +3,7 @@
 }
 
 .button {
-  @apply block h-8 w-8 rounded-md border-2 border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700 overflow-hidden;
+  @apply block h-8 w-8 rounded-md border-2 border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-100/20 overflow-hidden;
   background-color: #fff;
   background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>') !important;
 }
