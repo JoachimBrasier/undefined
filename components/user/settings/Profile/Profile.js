@@ -6,13 +6,16 @@ import s from './Profile.module.css';
 
 const Profile = () => {
   const { locale: activeLocale } = useRouter();
-  const { title } = locales[activeLocale].pages.user.settings.profile;
+  const { title, button } = locales[activeLocale].pages.user.settings.profile;
+
+  const handleSave = () => {};
 
   return (
     <>
-      <h3 className={s.title}>
-        {title}
-      </h3>
+      <h3 className={s.title}>{title}</h3>
+      <button type="button" className={s.button} onClick={handleSave}>
+        {button}
+      </button>
     </>
   );
 };

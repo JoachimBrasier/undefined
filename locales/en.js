@@ -63,27 +63,32 @@ const en = {
             title: 'Visited resources',
             checkbox: 'Show visited resources on home page',
             description: 'Enabling this will add an opacity filter on resources you already visited.',
+            button: 'Update preferences',
           },
         },
         profile: {
           title: 'Profile',
+          button: 'Update profile',
         },
         account: {
           title: 'Account',
           changeEmail: {
             title: 'Change email',
             description: '',
+            button: 'Update email',
+          },
+          exportData: {
+            title: 'Export account data',
+            description: 'Description...',
+            button: 'Export data',
           },
         },
         dangerZone: {
           title: 'Danger zone',
-          exportData: {
-            title: 'Export account data',
-            description: '',
-          },
           deleteAccount: {
             title: 'Delete account',
             description: 'Deleting your account is irreversible...',
+            button: 'Delete account',
           },
         },
       },

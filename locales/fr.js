@@ -63,27 +63,32 @@ const fr = {
             title: 'Ressources visitées',
             checkbox: "Afficher les ressources visités sur la page d'accueil",
             description: "L'activer ajoutera un filtre d'opacité sur les ressources que vous avez déjà visitées.",
+            button: 'Mettre à jour les préférences',
           },
         },
         profile: {
           title: 'Profil',
+          button: 'Mettre à jour le profil',
         },
         account: {
           title: 'Compte',
           changeEmail: {
             title: "Changer l'adresse email",
             description: '',
+            button: "Mettre à jour l'adresse email",
+          },
+          exportData: {
+            title: 'Exporter les données du compte',
+            description: 'Description...',
+            button: 'Exporter les données',
           },
         },
         dangerZone: {
           title: 'Zone de danger',
-          exportData: {
-            title: 'Exporter les données du compte',
-            description: '',
-          },
           deleteAccount: {
             title: 'Supprimer le compte',
             description: 'Supprimer votre compte est irréversible...',
+            button: 'Supprimer le compte',
           },
         },
       },

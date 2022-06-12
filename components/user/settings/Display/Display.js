@@ -12,6 +12,8 @@ const Display = () => {
   const { ThemePreferences, visitedResources } = locales[activeLocale].pages.user.settings.display;
   const { light, dark } = locales[activeLocale].themes;
 
+  const handleSave = () => {};
+
   return (
     <>
       <h3 className={s.title}>{ThemePreferences.title}</h3>
@@ -58,6 +60,9 @@ const Display = () => {
           </span>
         </label>
       </div>
+      <button type="button" className={s.button} onClick={handleSave}>
+        {visitedResources.button}
+      </button>
     </>
   );
 };

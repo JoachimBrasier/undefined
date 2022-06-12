@@ -8,12 +8,15 @@ const DangerZone = () => {
   const { locale: activeLocale } = useRouter();
   const { exportData, deleteAccount } = locales[activeLocale].pages.user.settings.dangerZone;
 
+  const handleDelete = () => {};
+
   return (
     <>
-      <h3 className={s.title}>{exportData.title}</h3>
-      <p className={s.description}>{exportData.description}</p>
       <h3 className={s.title}>{deleteAccount.title}</h3>
       <p className={s.description}>{deleteAccount.description}</p>
+      <button type="button" className={s.deleteButton} onClick={handleDelete}>
+        {deleteAccount.button}
+      </button>
     </>
   );
 };
