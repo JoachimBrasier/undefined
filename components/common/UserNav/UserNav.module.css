@@ -1,5 +1,5 @@
 .root {
-  @apply relative;
+  @apply relative z-10;
 }
 
 .button {
@@ -12,11 +12,15 @@
 }
 
 .dropdown {
-  @apply absolute z-10 mt-1 right-0 min-w-full overflow-auto rounded-md bg-white dark:bg-slate-800 py-2 shadow focus:outline-none;
+  @apply absolute mt-1 right-0 min-w-full overflow-auto rounded-md bg-white dark:bg-slate-800 py-2 shadow;
 }
 
 .item {
   @apply select-none whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-2 py-0.5 flex items-center text-slate-600 dark:text-slate-400 text-sm leading-6 font-medium;
+}
+
+.activeItem {
+  @apply bg-slate-100;
 }
 
 .icon {

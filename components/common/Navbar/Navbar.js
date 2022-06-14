@@ -32,8 +32,7 @@ const Navbar = () => {
           <div className={s.divider} />
           <div className={s.actions}>
             <NavbarLocaleSelect />
-            {['unauthenticated', 'loading'].includes(status) && <NavbarThemeToggler />}
-            <UserNav />
+            {status === 'authenticated' ? <UserNav /> : <NavbarThemeToggler />}
           </div>
         </div>
       </div>
