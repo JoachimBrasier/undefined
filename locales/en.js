@@ -76,6 +76,9 @@ const en = {
             title: 'Change email',
             description: '',
             button: 'Update email',
+            form: {
+              emailField: 'Email',
+            },
           },
           exportData: {
             title: 'Export account data',

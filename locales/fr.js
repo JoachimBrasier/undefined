@@ -76,6 +76,9 @@ const fr = {
             title: "Changer l'adresse email",
             description: '',
             button: "Mettre à jour l'adresse email",
+            form: {
+              emailField: 'Email',
+            },
           },
           exportData: {
             title: 'Exporter les données du compte',
