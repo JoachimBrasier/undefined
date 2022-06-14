@@ -15,7 +15,7 @@
 }
 
 .button {
-  @apply hidden absolute top-1 right-3 p-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
+  @apply z-20 hidden absolute top-1 right-3 p-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
 }
 
 .buttonVisible {
