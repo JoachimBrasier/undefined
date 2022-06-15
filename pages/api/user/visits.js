@@ -14,7 +14,7 @@ const handlePUT = withJoi(async (req, res) => {
   const resource = await prisma.resource.findUnique({ where: { id: req.body.resourceId } });
 
   if (!resource) {
-    return res.status(400).json({});
+    return res.status(400).end();
   }
 
   const result = await prisma.user.update({
@@ -64,7 +64,7 @@ const handler = async (req, res) => {
     case 'PUT':
       return handlePUT(req, res);
     default:
-      return res.status(405).json({});
+      return res.status(405).end();
   }
 };
 

@@ -174,7 +174,7 @@ const handler = async (req, res) => {
     case 'POST':
       return handlePOST(req, res);
     default:
-      return res.status(405).json({});
+      return res.status(405).end();
   }
 };
 
