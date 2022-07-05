@@ -31,6 +31,7 @@
     "cloudinary": "^1.29.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.28.0",
+    "file-type": "^17.1.2",
     "formidable": "^2.0.1",
     "joi": "^17.6.0",
     "js-cookie": "^3.0.1",
