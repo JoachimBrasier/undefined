@@ -44,7 +44,7 @@ export const getServerSideProps = async (ctx) => {
   // Fetch user visited resources
   // Only when user is auth
   if (session) {
-    visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/visits`, { headers });
+    visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/users/visits`, { headers });
     visits = await visits.json();
   }
 
@@ -60,7 +60,7 @@ export const getServerSideProps = async (ctx) => {
       visits,
       fallback: {
         [`/api/resources?${queryString}`]: resources,
-        ...(session && { '/api/user/visits': visits }),
+        ...(session && { '/api/users/visits': visits }),
       },
     },
   };

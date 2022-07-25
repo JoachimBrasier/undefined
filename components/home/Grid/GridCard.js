@@ -45,7 +45,7 @@ const GridCard = memo(({ resource, onVisit, visited }) => {
 
     const { id: resourceId } = resource;
 
-    const result = await fetch(`/api/user/visits`, {
+    const result = await fetch(`/api/users/visits`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ resourceId }),
