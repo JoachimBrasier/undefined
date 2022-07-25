@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useSession } from 'next-auth/react';
-
-import { useUiContext } from 'components/ui';
+import { toast } from 'react-toastify';
 
 import locales from 'locales';
 
@@ -20,6 +19,7 @@ const DangerZone = () => {
 
     if (result.status === 200) {
       console.log('DELETE OK');
+      toast('DELETE OK');
     }
   };
 
