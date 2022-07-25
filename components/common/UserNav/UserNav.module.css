@@ -20,7 +20,7 @@
 }
 
 .activeItem {
-  @apply bg-slate-100;
+  @apply bg-slate-100 dark:bg-slate-700/50;
 }
 
 .icon {
