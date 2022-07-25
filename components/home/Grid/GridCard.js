@@ -16,7 +16,7 @@ import locales from 'locales';
 import s from './GridCard.module.css';
 
 const GridCard = memo(({ resource, onVisit, visited }) => {
-  const { status } = useSession();
+  const { status, data } = useSession();
   const { locale: activeLocale } = useRouter();
   const { resourceDeprecated } = locales[activeLocale].pages.home;
   const { activeTags, setActiveTags } = useHomeContext();
@@ -45,7 +45,7 @@ const GridCard = memo(({ resource, onVisit, visited }) => {
 
     const { id: resourceId } = resource;
 
-    const result = await fetch(`/api/users/visits`, {
+    const result = await fetch(`/api/users/${data.user.id}/visits`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ resourceId }),
