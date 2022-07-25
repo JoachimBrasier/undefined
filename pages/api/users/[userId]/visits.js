@@ -68,4 +68,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default withAuth(handler);
+export default withAuth(handler, { sameUser: true });

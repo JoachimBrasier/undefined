@@ -15,9 +15,9 @@ const Grid = () => {
   const [mounted, setMounted] = useState(false);
   const { locale: activeLocale } = useRouter();
   const { queryString } = useHomeContext();
-  const { status } = useSession();
+  const { status, data } = useSession();
   const { data: resources, isValidating, mutate: mutateResources } = useSWR(`/api/resources?${queryString}`);
-  const { data: visits, mutate: mutateVisits } = useSWR(status === 'authenticated' ? '/api/users/visits' : null);
+  const { data: visits, mutate: mutateVisits } = useSWR(status === 'authenticated' ? `/api/users/${data.user.id}/visits` : null);
 
   useEffect(() => {
     if (!mounted) {
