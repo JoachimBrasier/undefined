@@ -1,14 +1,27 @@
 import { useRouter } from 'next/router';
 
+import { useSession } from 'next-auth/react';
+
+import { useUiContext } from 'components/ui';
+
 import locales from 'locales';
 
 import s from './DangerZone.module.css';
 
 const DangerZone = () => {
+  const { data } = useSession();
   const { locale: activeLocale } = useRouter();
   const { exportData, deleteAccount } = locales[activeLocale].pages.user.settings.dangerZone;
 
-  const handleDelete = () => {};
+  const handleDelete = async () => {
+    const result = await fetch(`/api/users/${data.user.id}/delete-account`, {
+      method: 'DELETE',
+    });
+
+    if (result.status === 200) {
+      console.log('DELETE OK');
+    }
+  };
 
   return (
     <>
