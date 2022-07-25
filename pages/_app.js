@@ -9,6 +9,7 @@ import NProgress from 'nprogress';
 import { SWRConfig } from 'swr';
 
 import { Layout } from 'components/common';
+import { UiProvider } from 'components/ui';
 
 import 'styles/global.css';
 
@@ -34,9 +35,11 @@ const App = ({ Component, pageProps }) => {
             <meta name="viewport" content="width=device-width, user-scalable=no" />
           </Head>
           <DefaultSeo {...SEO} />
-          <Layout {...pageProps}>
-            <Component {...pageProps} />
-          </Layout>
+          <UiProvider>
+            <Layout {...pageProps}>
+              <Component {...pageProps} />
+            </Layout>
+          </UiProvider>
         </ThemeProvider>
       </SWRConfig>
     </SessionProvider>
