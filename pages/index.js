@@ -46,6 +46,7 @@ export const getServerSideProps = async (ctx) => {
   if (session) {
     visits = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/users/${session.user.id}/visits`, { headers });
     visits = await visits.json();
+    console.log(visits);
   }
 
   return {
