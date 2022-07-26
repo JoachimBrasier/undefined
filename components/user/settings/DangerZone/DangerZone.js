@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 import { useState } from 'react';
 import { useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -17,6 +18,7 @@ const DangerZone = () => {
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef();
   const { data } = useSession();
+  const { theme } = useTheme();
   const { locale: activeLocale } = useRouter();
   const { deleteAccount } = locales[activeLocale].pages.user.settings.dangerZone;
 
@@ -56,7 +58,7 @@ const DangerZone = () => {
         danger
         loading={loading}
       >
-        <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} hl={activeLocale} />
+        <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} hl={activeLocale} theme={theme} />
       </Modal>
     </>
   );
