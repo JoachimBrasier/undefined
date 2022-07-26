@@ -31,8 +31,7 @@ const en = {
       searchPlaceholder: 'Search...',
       hero: {
         title: 'Be part of the community',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
         button: 'Login with GitHub',
       },
       proposal: {
@@ -92,6 +91,10 @@ const en = {
             title: 'Delete account',
             description: 'Deleting your account is irreversible...',
             button: 'Delete account',
+            modal: {
+              title: "Confirm you're not a robot",
+              description: 'Before you proceed, please complete the captcha below.',
+            },
           },
         },
       },

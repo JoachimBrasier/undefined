@@ -31,8 +31,7 @@ const fr = {
       searchPlaceholder: 'Rechercher...',
       hero: {
         title: 'Faites partie de la communauté',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed consectetur eleifend sapien a tempor.',
         button: 'Connexion avec GitHub',
       },
       proposal: {
@@ -92,6 +91,10 @@ const fr = {
             title: 'Supprimer le compte',
             description: 'Supprimer votre compte est irréversible...',
             button: 'Supprimer le compte',
+            modal: {
+              title: "Confirmez que vous n'êtes pas un robot",
+              description: 'Avant de continuer, veuillez compléter le captcha ci-dessous.',
+            },
           },
         },
       },
