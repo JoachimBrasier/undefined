@@ -19,7 +19,12 @@ const fr = {
       loveMessage: 'Fait avec [icon-heart] pour les développeurs',
     },
   },
-  components: {},
+  components: {
+    modal: {
+      confirm: 'Confirmer',
+      cancel: 'Annuler',
+    },
+  },
   pages: {
     notFound: {
       sorry: 'Désolé, nous ne trouvons pas la page que vous cherchez...',
