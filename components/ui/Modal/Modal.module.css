@@ -3,7 +3,7 @@
 }
 
 .backdrop {
-  @apply fixed inset-0 bg-black bg-opacity-25 dark:bg-opacity-50 opacity-100;
+  @apply fixed inset-0 bg-black bg-black/20 backdrop-blur-sm dark:bg-slate-900/80;
 }
 
 .scrollable {
@@ -15,7 +15,7 @@
 }
 
 .panel {
-  @apply w-full max-w-lg rounded-lg bg-white dark:bg-slate-900 text-left shadow-xl overflow-hidden;
+  @apply w-full max-w-lg rounded-lg bg-white dark:bg-slate-900 text-left shadow-xl overflow-hidden border border-slate-900/10 dark:border-slate-100/20;
 }
 
 .body {
