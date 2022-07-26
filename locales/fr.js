@@ -89,7 +89,7 @@ const fr = {
           title: 'Zone de danger',
           deleteAccount: {
             title: 'Supprimer le compte',
-            description: 'Supprimer votre compte est irréversible...',
+            description: 'Votre compte sera entièrement supprimé de la base de données, cette action est irréversible.',
             button: 'Supprimer le compte',
             modal: {
               title: "Confirmez que vous n'êtes pas un robot",

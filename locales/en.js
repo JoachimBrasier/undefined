@@ -89,7 +89,7 @@ const en = {
           title: 'Danger zone',
           deleteAccount: {
             title: 'Delete account',
-            description: 'Deleting your account is irreversible...',
+            description: 'Your account will be entirely deleted from the database, this action is irreversible.',
             button: 'Delete account',
             modal: {
               title: "Confirm you're not a robot",
