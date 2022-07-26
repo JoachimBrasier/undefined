@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useTheme } from 'next-themes';
+import { toast } from 'react-toastify';
 
 import locales from 'locales';
 
@@ -12,7 +13,9 @@ const Display = () => {
   const { ThemePreferences, visitedResources } = locales[activeLocale].pages.user.settings.display;
   const { light, dark } = locales[activeLocale].themes;
 
-  const handleSave = () => {};
+  const handleSave = async () => {
+    toast.success('Preferences updated');
+  };
 
   return (
     <>

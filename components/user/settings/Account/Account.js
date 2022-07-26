@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useSession } from 'next-auth/react';
+import { toast } from 'react-toastify';
 
 import locales from 'locales';
 
@@ -11,7 +12,17 @@ const Account = () => {
   const { locale: activeLocale } = useRouter();
   const { changeEmail, exportData } = locales[activeLocale].pages.user.settings.account;
 
-  const handleExport = () => {};
+  const handleExport = async () => {
+    const result = await fetch(`/api/users/${data.user.id}/update-email`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+    });
+
+    if (result.status === 200) {
+      toast.success('Email updated');
+    }
+  };
 
   return (
     <>
