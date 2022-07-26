@@ -18,8 +18,7 @@ const DangerZone = () => {
     });
 
     if (result.status === 200) {
-      console.log('DELETE OK');
-      toast('DELETE OK');
+      toast.success('Account successfully deleted');
     }
   };
 

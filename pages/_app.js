@@ -6,11 +6,10 @@ import { DefaultSeo } from 'next-seo';
 import SEO from 'next-seo.config';
 import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
-import { ToastContainer } from 'react-toastify';
 import { SWRConfig } from 'swr';
 
 import { Layout } from 'components/common';
-import { UiProvider } from 'components/ui';
+import { Toast, UiProvider } from 'components/ui';
 
 import 'styles/global.css';
 
@@ -40,7 +39,7 @@ const App = ({ Component, pageProps }) => {
             <Layout {...pageProps}>
               <Component {...pageProps} />
             </Layout>
-            <ToastContainer />
+            <Toast />
           </UiProvider>
         </ThemeProvider>
       </SWRConfig>

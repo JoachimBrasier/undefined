@@ -49,3 +49,7 @@ input:checked[type="radio"] {
 .react-colorful__hue-pointer, .react-colorful__alpha-pointer {
   @apply w-4 h-4 rounded-full !important;
 }
+
+.Toastify__toast-icon {
+  @apply w-fit mr-3; 
+}

@@ -1,0 +1,39 @@
+.root {
+  @apply min-h-[40px] mb-4 shadow-lg select-none bg-white dark:bg-slate-800 border border-slate-900/10 dark:border-slate-100/20 relative flex items-center p-2 rounded-md justify-between overflow-hidden cursor-pointer;
+}
+
+.default {}
+
+.success {}
+
+.error {}
+
+.info {}
+
+.warning {}
+
+.dark {}
+
+.body {
+  @apply flex text-sm font-medium leading-5 text-slate-700 dark:text-slate-400 block p-3 w-full h-full;
+}
+
+.closeIcon {
+  @apply h-5 w-5 mr-2 text-slate-700 dark:text-slate-400;
+}
+
+.successIcon {
+  @apply h-5 w-5 mr-2 text-green-500 mr-0;
+}
+
+.errorIcon {
+  @apply h-5 w-5 mr-2 text-red-500 mr-0;
+}
+
+.infoIcon {
+  @apply h-5 w-5 mr-2 text-blue-500 mr-0;
+}
+
+.warningIcon {
+  @apply h-5 w-5 mr-2 text-yellow-500 mr-0;
+}
