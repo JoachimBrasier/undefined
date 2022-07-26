@@ -34,6 +34,8 @@ const DangerZone = () => {
       method: 'DELETE',
     });
 
+    console.log(await result.json());
+
     if (result.status === 200) {
       handleClose();
       toast.success('Account successfully deleted');
