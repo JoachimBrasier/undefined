@@ -39,6 +39,7 @@ const Item = memo(({ selected, onChange, label, value, authRequired = false }) =
 
 Item.displayName = 'Item';
 
+// TODO: Transition
 const Sidebar = ({ tags }) => {
   const { locale: activeLocale } = useRouter();
   const { filters, tagsTitle, tagsTranslate } = locales[activeLocale].pages.home;
@@ -55,12 +56,7 @@ const Sidebar = ({ tags }) => {
           <span className={s.title}>{filters.title}</span>
           <ul className={s.list}>
             <Item value={null} label={filters.latest} selected={activeFilter === null} onChange={setActiveFilter} />
-            <Item
-              value="popular"
-              label={filters.popular}
-              selected={activeFilter === 'popular'}
-              onChange={setActiveFilter}
-            />
+            <Item value="popular" label={filters.popular} selected={activeFilter === 'popular'} onChange={setActiveFilter} />
             <Item
               value="history"
               label={filters.history}
