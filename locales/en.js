@@ -96,6 +96,7 @@ const en = {
             title: 'Delete account',
             description: 'Your account will be entirely deleted from the database, this action is irreversible.',
             button: 'Delete account',
+            successMessage: 'Account successfully deleted',
             modal: {
               title: 'Are you sure?',
               description: 'Do you really want to leave us? All your data will be lost forever.',

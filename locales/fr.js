@@ -96,6 +96,7 @@ const fr = {
             title: 'Supprimer le compte',
             description: 'Votre compte sera entièrement supprimé de la base de données, cette action est irréversible.',
             button: 'Supprimer le compte',
+            successMessage: 'Compte supprimé avec succès',
             modal: {
               title: 'Vous êtes sûr ?',
               description: 'Voulez-vous vraiment nous quitter ? Toutes vos données seront perdues à jamais.',

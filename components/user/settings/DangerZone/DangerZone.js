@@ -26,7 +26,7 @@ const DangerZone = () => {
 
     if (result.status === 200) {
       setModalVisible(false);
-      toast.success('Account successfully deleted');
+      toast.success(deleteAccount.successMessage);
     }
 
     setLoading(false);
