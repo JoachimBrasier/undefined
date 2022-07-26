@@ -1,10 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useSession } from 'next-auth/react';
-import { useTheme } from 'next-themes';
 import { useState } from 'react';
-import { useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
 
 import { Modal } from 'components/ui';
@@ -16,16 +13,9 @@ import s from './DangerZone.module.css';
 const DangerZone = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const recaptchaRef = useRef();
   const { data } = useSession();
-  const { theme } = useTheme();
   const { locale: activeLocale } = useRouter();
   const { deleteAccount } = locales[activeLocale].pages.user.settings.dangerZone;
-
-  const handleClose = () => {
-    recaptchaRef.current.reset();
-    setModalVisible(false);
-  };
 
   const handleDelete = async () => {
     setLoading(true);
@@ -34,10 +24,8 @@ const DangerZone = () => {
       method: 'DELETE',
     });
 
-    console.log(await result.json());
-
     if (result.status === 200) {
-      handleClose();
+      setModalVisible(false);
       toast.success('Account successfully deleted');
     }
 
@@ -53,15 +41,13 @@ const DangerZone = () => {
       </button>
       <Modal
         visible={modalVisible}
-        onClose={handleClose}
+        onClose={() => setModalVisible(false)}
         onConfirm={handleDelete}
         title={deleteAccount.modal.title}
         description={deleteAccount.modal.description}
         danger
         loading={loading}
-      >
-        <ReCAPTCHA ref={recaptchaRef} sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} hl={activeLocale} theme={theme} />
-      </Modal>
+      />
     </>
   );
 };

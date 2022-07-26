@@ -92,8 +92,8 @@ const en = {
             description: 'Your account will be entirely deleted from the database, this action is irreversible.',
             button: 'Delete account',
             modal: {
-              title: "Confirm you're not a robot",
-              description: 'Before you proceed, please complete the captcha below.',
+              title: 'Are you sure?',
+              description: 'Do you really want to leave us? All your data will be lost forever.',
             },
           },
         },

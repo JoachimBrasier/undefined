@@ -92,8 +92,8 @@ const fr = {
             description: 'Votre compte sera entièrement supprimé de la base de données, cette action est irréversible.',
             button: 'Supprimer le compte',
             modal: {
-              title: "Confirmez que vous n'êtes pas un robot",
-              description: 'Avant de continuer, veuillez compléter le captcha ci-dessous.',
+              title: 'Vous êtes sûr ?',
+              description: 'Voulez-vous vraiment nous quitter ? Toutes vos données seront perdues à jamais.',
             },
           },
         },
